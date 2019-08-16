@@ -10,7 +10,7 @@ import mewtwo_config as config
 print('Starting Mewtwo.py... This may take some time.')
 print('')
 
-bot = commands.Bot(command_prefix='>!', description="""Mewtwo, now in Python! By sks316#2523""", owner_id=config.owner, case_insensitive=True)
+bot = commands.Bot(command_prefix='>!', owner_id=config.owner, case_insensitive=True)
 cogs = ["cogs.general", "cogs.fun", "cogs.nsfw", "cogs.other"]
 
 start_time = datetime.datetime.utcnow()
