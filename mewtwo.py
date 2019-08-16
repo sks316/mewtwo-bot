@@ -11,7 +11,7 @@ print('Starting Mewtwo.py... This may take some time.')
 print('')
 
 bot = commands.Bot(command_prefix='>!', owner_id=config.owner, case_insensitive=True)
-cogs = ["cogs.general", "cogs.fun", "cogs.nsfw", "cogs.other"]
+cogs = ["cogs.general", "cogs.fun", "cogs.nsfw", "cogs.other", "cogs.admin"]
 
 start_time = datetime.datetime.utcnow()
 
