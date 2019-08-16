@@ -6,5 +6,4 @@ dataset
 typing
 requests
 bs4
-pymediawiki
 rule34
