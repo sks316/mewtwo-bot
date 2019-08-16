@@ -44,10 +44,10 @@ Since this is the Beta bot, the prefix is different from normal - The Beta bot's
 
 
 [server]: https://discord.gg/kDC9tW7
-[server-badge]: https://img.shields.io/discord/444344089878724619.svg?style=flat-square&colorB=7289DA
+[server-badge]: https://img.shields.io/discord/444344089878724619.svg?style=for-the-badge&logo=discord&colorB=7289DA
 
 [invite]: https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=8
-[invite-badge]: https://img.shields.io/badge/invite%20mewtwo-click%20here-black.svg?style=flat-square&colorB=8253C3
+[invite-badge]: https://img.shields.io/badge/invite%20mewtwo-click%20here-black.svg?style=for-the-badge&colorB=8253C3
 
 [secondary-invite]: https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=388160
-[secondary-invite-badge]: https://img.shields.io/badge/or%20use%20this%20invite-click%20here-black.svg?style=flat-square&colorB=8253C3
+[secondary-invite-badge]: https://img.shields.io/badge/or%20use%20this%20invite-click%20here-black.svg?style=for-the-badge&colorB=8253C3
