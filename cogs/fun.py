@@ -132,88 +132,29 @@ class Fun(commands.Cog):
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def pokedex(self, ctx, *, arg):
         #--Some Pokemon with several forms are named differently on the API, so if one of those Pokemon are specified, we replace the query with the correct name--#
-        if arg == 'meloetta':
-            pkmn = 'Meloetta - Aria Forme'
-        elif arg == 'Meloetta':
-            pkmn = 'Meloetta - Aria Forme'
-        elif arg == 'keldeo':
-            pkmn = 'Keldeo - Ordinary Form'
-        elif arg == 'Keldeo':
-            pkmn = 'Keldeo - Ordinary Form'
-        elif arg == 'burmy':
-            pkmn = 'Burmy - Plant Cloak'
-        elif arg == 'Burmy':
-            pkmn = 'Burmy - Plant Cloak'
-        elif arg == 'wormadam':
-            pkmn = 'Wormadam - Plant Cloak'
-        elif arg == 'Wormadam':
-            pkmn = 'Wormadam - Plant Cloak'
-        elif arg == 'cherrim':
-            pkmn = 'Cherrim - Overcast Form'
-        elif arg == 'Cherrim':
-            pkmn = 'Cherrim - Overcast Form'
-        elif arg == 'giratina':
-            pkmn = 'Giratina - Altered Forme'
-        elif arg == 'Giratina':
-            pkmn = 'Giratina - Altered Forme'
-        elif arg == 'shaymin':
-            pkmn = 'Shaymin - Land Forme'
-        elif arg == 'Shaymin':
-            pkmn = 'Shaymin - Land Forme'
-        elif arg == 'basculin':
-            pkmn = 'Basculin - Red-Striped Form'
-        elif arg == 'Basculin':
-            pkmn = 'Basculin - Red-Striped Form'
-        elif arg == 'deerling':
-            pkmn = 'Deerling - Spring Form'
-        elif arg == 'Deerling':
-            pkmn = 'Deerling - Spring Form'
-        elif arg == 'tornadus':
-            pkmn = 'Tornadus - Incarnate Forme'
-        elif arg == 'Tornadus':
-            pkmn = 'Tornadus - Incarnate Forme'
-        elif arg == 'thundurus':
-            pkmn = 'Thundurus - Incarnate Forme'
-        elif arg == 'Thundurus':
-            pkmn = 'Thundurus - Incarnate Forme'
-        elif arg == 'landorus':
-            pkmn = 'Landorus - Incarnate Forme'
-        elif arg == 'Landorus':
-            pkmn = 'Landorus - Incarnate Forme'
-        elif arg == 'flabebe':
-            pkmn = 'Flabébé'
-        elif arg == 'Flabebe':
-            pkmn = 'Flabébé'
-        elif arg == 'zygarde':
-            pkmn = 'Zygarde - Complete Forme'
-        elif arg == 'Zygarde':
-            pkmn = 'Zygarde - Complete Forme'
-        elif arg == 'hoopa':
-            pkmn = 'Hoopa Confined'
-        elif arg == 'Hoopa':
-            pkmn = 'Hoopa Confined'
-        elif arg == 'oricorio':
-            pkmn = 'Oricorio - Baile Style'
-        elif arg == 'Oricorio':
-            pkmn = 'Oricorio - Baile Style'
-        elif arg == 'lycanroc':
-            pkmn = 'Lycanroc - Midday Form'
-        elif arg == 'Lycanroc':
-            pkmn = 'Lycanroc - Midday Form'
-        elif arg == 'wishiwashi':
-            pkmn = 'Wishiwashi - Solo Form'
-        elif arg == 'Wishiwashi':
-            pkmn = 'Wishiwashi - Solo Form'
-        elif arg == 'minior':
-            pkmn = 'Minior - Meteor Form'
-        elif arg == 'Minior':
-            pkmn = 'Minior - Meteor Form'
-        elif arg == 'mimikyu':
-            pkmn = 'Mimikyu - Disguised Form'
-        elif arg == 'Mimikyu':
-            pkmn = 'Mimikyu - Disguised Form'
-        else:
-            pkmn = arg
+        pkmn = {
+            'meloetta': 'Meloetta - Aria Forme',
+            'keldeo': 'Keldeo - Ordinary Form',
+            'burmy': 'Burmy - Plant Cloak',
+            'wormadam': 'Wormadam - Plant Cloak',
+            'cherrim': 'Cherrim - Overcast Form',
+            'giratina': 'Giratina - Altered Forme',
+            'shaymin': 'Shaymin - Land Forme',
+            'basculin': 'Basculin - Red-Striped Form',
+            'deerling': 'Deerling - Spring Form',
+            'tornadus': 'Tornadus - Incarnate Forme',
+            'thundurus': 'Thundurus - Incarnate Forme',
+            'landorus': 'Landorus - Incarnate Forme',
+            'flabebe': 'Flabébé',
+            'zygarde': 'Zygarde - Complete Forme',
+            'hoopa': 'Hoopa Confined',
+            'oricorio': 'Oricorio - Baile Style',
+            'lycanroc': 'Lycanroc - Midday Form',
+            'wishiwashi': 'Wishiwashi - Solo Form',
+            'minior': 'Minior - Meteor Form',
+            'mimikyu': 'Mimikyu - Disguised Form',
+        }.get(arg.lower(), arg)
+
         #--First we connect to the Pokedex API and download the Pokedex entry--#
         async with aiohttp.ClientSession() as session:
             async with session.get('https://pokeapi.glitch.me/v1/pokemon/' + pkmn) as dex_entry:
