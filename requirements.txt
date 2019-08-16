@@ -1,0 +1,10 @@
+discord.py
+asyncio
+aiohttp
+python-dateutil
+dataset
+typing
+requests
+bs4
+pymediawiki
+rule34
