@@ -5,6 +5,11 @@ Oh hello. Welcome to the repo for Mewtwo, my little bot written under Discord.py
 
 # How to run the bot
 Oh... I didn't expect that. You actually wanna run it, huh? Some emojis won't work, but that's fine I guess...
+
+
+First, let's get something out of the way: Since this is the Beta bot, the prefix is different from normal - The Beta bot's prefix is **>!**. This is not reflected in the help commands or statuses of the bot. If that bugs you, change it yourself.
+
+
 Well, here's how to host it I guess
 ## Cloning the repo
 Just do a good ol `git clone` like so:
@@ -42,7 +47,6 @@ Or, if you're using Linux:
 ```
 python3 mewtwo.py
 ```
-Since this is the Beta bot, the prefix is different from normal - The Beta bot's prefix is **>!**. This is not reflected in the help commands or statuses of the bot.
 
 
 [server]: https://discord.gg/kDC9tW7
