@@ -14,7 +14,7 @@ git clone https://github.com/sks316/mewtwo-bot.git
 ## Installing dependencies
 First of all, make sure you've got Python installed. If you don't, what the hell are you even doing here install Python first you idiot
 
-Once you've installed Python or if you already had it installed like a good boy/girl, cd into the cloned directory run the following:
+Once you've installed Python or if you already had it installed like a good boy/girl, cd into the cloned directory and run the following:
 ```
 pip install -r requirements.txt
 ```
