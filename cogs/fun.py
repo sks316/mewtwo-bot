@@ -233,6 +233,23 @@ class Fun(commands.Cog):
 
     @commands.command()
     @commands.cooldown(1, 5, commands.BucketType.user)
+    async def pat(self, ctx, *, user: discord.Member = None):
+        if user == None:
+            return await ctx.send(":x: You need someone to hug! You can hug me if you want...")
+        if user == ctx.author:
+            return await ctx.send(":x: You can't hug yourself! You can hug me if you want...")
+        #--Get image from NekosLife API--#
+        async with aiohttp.ClientSession() as session:
+            async with session.get('https://nekos.life/api/v2/img/pat') as pat:
+                data = await pat.json()
+                result = data.get('url')
+                embed = discord.Embed(title="<a:ablobheadpats:612416610556313600> " + ctx.author.name + " gives " + user.name + " some headpats!",  color=0x8253c3)
+                embed.set_image(url=result)
+                embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                await ctx.send(embed=embed)
+
+    @commands.command()
+    @commands.cooldown(1, 5, commands.BucketType.user)
     async def cuddle(self, ctx, *, user: discord.Member = None):
         if user == None:
             return await ctx.send(":x: You need someone to cuddle! You can cuddle me if you want...")
