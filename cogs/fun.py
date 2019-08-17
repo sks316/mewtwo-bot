@@ -235,9 +235,9 @@ class Fun(commands.Cog):
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def pat(self, ctx, *, user: discord.Member = None):
         if user == None:
-            return await ctx.send(":x: You need someone to hug! You can hug me if you want...")
+            return await ctx.send(":x: You need someone to give headpats to! You can give me a headpat if you want...")
         if user == ctx.author:
-            return await ctx.send(":x: You can't hug yourself! You can hug me if you want...")
+            return await ctx.send(":x: You can't give yourself headpats! You can give me a headpat if you want...")
         #--Get image from NekosLife API--#
         async with aiohttp.ClientSession() as session:
             async with session.get('https://nekos.life/api/v2/img/pat') as pat:
