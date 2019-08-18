@@ -105,5 +105,27 @@ class NSFW(commands.Cog):
                 embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
+    @commands.command()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    @commands.is_nsfw()
+    async def e621(self, ctx, *, search: str):
+        loading = await ctx.send('<a:loading:598027019447435285> Looking for an image on e621...')
+        #--Connect to e621 and get first 100 results--#
+        e621_agent = {'User-Agent': 'Mewtwo Discord Bot/v2.0 https://github.com/sks316/mewtwo-bot'}
+        async with aiohttp.ClientSession(headers=e621_agent) as session:
+            async with session.get('https://e621.net/post/index.json?tags=' + search + '&limit=100') as esix:
+                data = await esix.json()
+                number = random.randint(0, 99)
+                #--Now we attempt to extract information--#
+                try:
+                    score = str(data[number]['score'])
+                    image = data[number]['file_url']
+                    embed = discord.Embed(title=":underage: e621 image for **" + search + "**", description="_ _ \n:arrow_up: **Score:** " + score, color=0x8253c3)
+                    embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                    embed.set_image(url=image)
+                    await loading.edit(content='', embed=embed)
+                except IndexError:
+                    return await loading.edit(content=":x: No results found for your query. Check your spelling and try again.")
+
 def setup(bot):
     bot.add_cog(NSFW(bot))
