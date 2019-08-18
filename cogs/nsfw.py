@@ -113,13 +113,13 @@ class NSFW(commands.Cog):
         #--Connect to e621 and get first 100 results--#
         e621_agent = {'User-Agent': 'Mewtwo Discord Bot/v2.0 https://github.com/sks316/mewtwo-bot'}
         async with aiohttp.ClientSession(headers=e621_agent) as session:
-            async with session.get('https://e621.net/post/index.json?tags=' + search + '&limit=100') as esix:
+            async with session.get('https://e621.net/post/index.json?tags=' + search + '&limit=1000') as esix:
                 data = await esix.json()
-                number = random.randint(0, 99)
                 #--Now we attempt to extract information--#
                 try:
-                    score = str(data[number]['score'])
-                    image = data[number]['file_url']
+                    post = random.choice(data)
+                    score = str(post['score'])
+                    image = post['file_url']
                     embed = discord.Embed(title=":underage: e621 image for **" + search + "**", description="_ _ \n:arrow_up: **Score:** " + score, color=0x8253c3)
                     embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                     embed.set_image(url=image)
