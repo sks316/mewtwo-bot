@@ -37,7 +37,10 @@ class NSFW(commands.Cog):
                     image = post['file_url']
                     embed = discord.Embed(title=":underage: Rule34 image for **" + search + "**", description="_ _ \n:arrow_up: **Score:** " + score, color=0x8253c3)
                     embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
-                    embed.set_image(url=image)
+                    if image.endswith(".webm") or image.endswith(".mp4"):
+                        embed.add_field(name="Video URL:", value=image)
+                    else:
+                        embed.set_image(url=image)
                     await loading.edit(content='', embed=embed)
                 except IndexError:
                     return await loading.edit(content=":x: No results found for your query. Check your spelling and try again.")
@@ -95,7 +98,10 @@ class NSFW(commands.Cog):
                     image = post['file_url']
                     embed = discord.Embed(title=":underage: e621 image for **" + search + "**", description="_ _ \n:arrow_up: **Score:** " + score, color=0x8253c3)
                     embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
-                    embed.set_image(url=image)
+                    if image.endswith(".webm") or image.endswith(".mp4"):
+                        embed.add_field(name="Video URL:", value=image)
+                    else:
+                        embed.set_image(url=image)
                     await loading.edit(content='', embed=embed)
                 except IndexError:
                     return await loading.edit(content=":x: No results found for your query. Check your spelling and try again.")
