@@ -89,7 +89,7 @@ class NSFW(commands.Cog):
         #--Connect to e621 and get first 100 results--#
         e621_agent = {'User-Agent': 'Mewtwo Discord Bot/v2.0 https://github.com/sks316/mewtwo-bot'}
         async with aiohttp.ClientSession(headers=e621_agent) as session:
-            async with session.get('https://e621.net/post/index.json?tags=' + search + '&limit=1000') as esix:
+            async with session.get('https://e621.net/post/index.json?tags=' + search + '&limit=100') as esix:
                 data = await esix.json()
                 #--Now we attempt to extract information--#
                 try:
