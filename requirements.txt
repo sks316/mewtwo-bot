@@ -6,4 +6,3 @@ dataset
 typing
 requests
 bs4
-rule34

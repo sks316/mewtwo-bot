@@ -12,7 +12,6 @@ import xml.etree.ElementTree
 import requests
 import typing
 import json
-import rule34
 
 botver = "Mewtwo v2.0"
 
