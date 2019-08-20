@@ -45,6 +45,32 @@ class NSFW(commands.Cog):
                 except IndexError:
                     return await loading.edit(content=":x: No results found for your query. Check your spelling and try again.")
 
+    @commands.command()
+    @commands.cooldown(3, 5, commands.BucketType.user)
+    @commands.is_nsfw()
+    async def gelbooru(self, ctx, *, search: str):
+        loading = await ctx.send('<a:loading:598027019447435285> Looking for an image on Gelbooru...')
+        #--Connect to Gelbooru JSON API and download search data--#
+        async with aiohttp.ClientSession() as session:
+            async with session.get('https://gelbooru.com/index.php?page=dapi&s=post&q=index&json=1&tags=' + search) as gel:
+                data = await gel.json()
+                #--Now we attempt to extract information--#
+                try:
+                    post = random.choice(data)
+                    score = str(post['score'])
+                    image = post['file_url']
+                    if image.endswith(".webm") or image.endswith(".mp4"):
+                        await loading.edit(content=":underage: Gelbooru image for **" + search + "** \n\n:arrow_up: **Score:** " + score + "\n\n**Video URL:** " + image)
+                    else:
+                        embed = discord.Embed(title=":underage: Gelbooru image for **" + search + "**", description="_ _ \n:arrow_up: **Score:** " + score, color=0x8253c3)
+                        embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_image(url=image)
+                        await loading.edit(content='', embed=embed)
+                except IndexError:
+                    return await loading.edit(content=":x: No results found for your query. Check your spelling and try again.")
+                except TypeError:
+                    return await loading.edit(content=":x: No results found for your query. Check your spelling and try again.")
+
     @commands.command(aliases=["booby", "tiddy", "tits"])
     @commands.cooldown(1, 5, commands.BucketType.user)
     @commands.is_nsfw()

@@ -124,7 +124,7 @@ class General(commands.Cog):
     @commands.command(pass_context=True)
     async def nsfwhelp(self, ctx):
         embed = discord.Embed(title=botver, description="The command prefix is `>`. To run a command, you must begin a message with `>`. \n**NSFW commands will work only in NSFW channels or DMs.**", color=0x8253c3)
-        embed.add_field(name="NSFW commands:", value="**>rule34** - Gets a random image from Rule34.xxx that matches the provided query. Aliases: **>r34** \n**>e621** - Gets a random image from e621 that matches the provided query. \n**>boobs** - Boobies! Gets a random titty image or GIF from the nekos.life API. Aliases: **>booby, >tiddy, >tits** \n**>fuck** - Fuck somebody, make them feel good! :wink:", inline=False)
+        embed.add_field(name="NSFW commands:", value="**>rule34** - Gets a random image from Rule34.xxx that matches the provided query. Aliases: **>r34** \n**>e621** - Gets a random image from e621 that matches the provided query. \n**>gelbooru** - Gets a random image from Gelbooru that matches the provided query. \n**>boobs** - Boobies! Gets a random titty image or GIF from the nekos.life API. Aliases: **>booby, >tiddy, >tits** \n**>fuck** - Fuck somebody, make them feel good! :wink:", inline=False)
         embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.message.author.send(embed=embed)
         await ctx.message.add_reaction("🔞")
