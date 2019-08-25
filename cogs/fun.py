@@ -265,7 +265,7 @@ class Fun(commands.Cog):
                 embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(aliases=["smooch"])
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def kiss(self, ctx, *, user: discord.Member = None):
         if user == None:
