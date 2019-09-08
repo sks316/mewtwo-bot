@@ -40,6 +40,7 @@ melo =[ #--List of images for meloetta command--#
     'https://sks316.s-ul.eu/aFAdkPwl',
     'https://sks316.s-ul.eu/2Lfgxr8u',
     'https://sks316.s-ul.eu/menN6SzZ',
+    'https://sks316.s-ul.eu/YRaq87pI',
 ]
 
 sylv =[ #--List of images for sylveon command--#
