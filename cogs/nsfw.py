@@ -31,7 +31,8 @@ class NSFW(commands.Cog):
                 data = await r34.json()
                 #--Now we attempt to extract information--#
                 try:
-                    post = random.choice(data)
+                    posts = data['posts']
+                    post = random.choice(posts)
                     score = post['score']
                     image = post['file_url']
                     image = image.replace("https://custom-r34-api.herokuapp.com/images?url=", "")
