@@ -20,7 +20,7 @@ class Admin(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def changestatus(self, ctx, *, arg):
-        await bot.change_presence(activity=discord.Game(name=arg))
+        await self.bot.change_presence(activity=discord.Game(name=arg))
         await ctx.send(":ok_hand: Done.")
 
     @commands.command(pass_context=True)
