@@ -27,7 +27,7 @@ class NSFW(commands.Cog):
         loading = await ctx.send('<a:loading:598027019447435285> Looking for an image on Rule34...')
         #--Connect to Rule34 JSON API and download search data--#
         async with aiohttp.ClientSession() as session:
-            async with session.get('https://custom-r34-api.herokuapp.com/posts?tags=' + search) as r34:
+            async with session.get('https://r34-json.herokuapp.com/posts?tags=' + search) as r34:
                 data = await r34.json()
                 #--Now we attempt to extract information--#
                 try:
