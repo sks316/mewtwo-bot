@@ -35,7 +35,7 @@ class NSFW(commands.Cog):
                     post = random.choice(posts)
                     score = post['score']
                     image = post['file_url']
-                    image = image.replace("https://custom-r34-api.herokuapp.com/images?url=", "")
+                    image = image.replace("https://r34-json.herokuapp.com/images?url=", "")
                     if image.endswith(".webm") or image.endswith(".mp4"):
                         await loading.edit(content=":underage: Rule34 image for **" + search + "** \n\n:arrow_up: **Score:** " + score + "\n\n**Video URL:** " + image)
                     else:
