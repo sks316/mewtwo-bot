@@ -75,80 +75,6 @@ sylv =[ #--List of images for sylveon command--#
     'https://sks316.s-ul.eu/MPbW5CLJ',
 ]
 
-bowsette =[ #--List of images for bowsette command--#
-    'https://sks316.s-ul.eu/FEUjPPC4',
-    'https://sks316.s-ul.eu/EQLkGu8t',
-    'https://sks316.s-ul.eu/Av36x7aV',
-    'https://sks316.s-ul.eu/ImriIW4g',
-    'https://sks316.s-ul.eu/B560OpIO',
-    'https://sks316.s-ul.eu/NJhxlnPG',
-    'https://sks316.s-ul.eu/G4XKQUfP',
-    'https://sks316.s-ul.eu/y2xnEFfv',
-    'https://sks316.s-ul.eu/PClAQ6os',
-    'https://sks316.s-ul.eu/elZ6Q0LG',
-    'https://sks316.s-ul.eu/EGPRqjQa',
-    'https://sks316.s-ul.eu/SU4GKFZm',
-    'https://sks316.s-ul.eu/AO7iYB6C',
-    'https://sks316.s-ul.eu/vC4dhPRM',
-    'https://sks316.s-ul.eu/l97iSljt',
-    'https://sks316.s-ul.eu/Bm1w9JeH',
-    'https://sks316.s-ul.eu/GfApyiS6',
-    'https://sks316.s-ul.eu/yXfajgrK',
-    'https://sks316.s-ul.eu/0PlpMuos',
-    'https://sks316.s-ul.eu/5S0o1P1R',
-    'https://sks316.s-ul.eu/GvftAyO6',
-    'https://sks316.s-ul.eu/9GYZxTbd',
-    'https://sks316.s-ul.eu/wmZBYuwM',
-    'https://sks316.s-ul.eu/9k04vGIF',
-    'https://sks316.s-ul.eu/cAmRLgOp',
-    'https://sks316.s-ul.eu/XalN3HWq',
-    'https://sks316.s-ul.eu/tJZkTJY0',
-    'https://sks316.s-ul.eu/qJq7VBnI',
-    'https://sks316.s-ul.eu/9iUJ7PLu',
-    'https://sks316.s-ul.eu/iLjhfFSU',
-    'https://sks316.s-ul.eu/JI0HVU3z',
-    'https://sks316.s-ul.eu/8ETGYF7H',
-    'https://sks316.s-ul.eu/5CMvJTtk',
-    'https://sks316.s-ul.eu/boetsasn',
-    'https://sks316.s-ul.eu/GpNXgpX5',
-    'https://sks316.s-ul.eu/2TiYLkXq',
-    'https://sks316.s-ul.eu/s1Wyw8wI',
-    'https://sks316.s-ul.eu/W5JjY7C7',
-    'https://sks316.s-ul.eu/rr9D4a3E',
-    'https://sks316.s-ul.eu/Gcm5YKkq',
-    'https://sks316.s-ul.eu/f3WHuPxG',
-    'https://sks316.s-ul.eu/fmWQrqTv',
-    'https://sks316.s-ul.eu/LRtIFUHv',
-    'https://sks316.s-ul.eu/YrFy8kOc',
-    'https://sks316.s-ul.eu/R2ej6xMP',
-    'https://sks316.s-ul.eu/XBaJZAbV',
-    'https://sks316.s-ul.eu/XlimY6dp',
-    'https://sks316.s-ul.eu/mMQfIoQy',
-    'https://sks316.s-ul.eu/rWHnjFWR',
-    'https://sks316.s-ul.eu/alB9m2eI',
-    'https://sks316.s-ul.eu/WyGPjoor',
-    'https://sks316.s-ul.eu/L2QnGQYs',
-    'https://sks316.s-ul.eu/TjEXh7ln',
-    'https://sks316.s-ul.eu/YYUzizyF',
-    'https://sks316.s-ul.eu/DpDiLZ5E',
-    'https://sks316.s-ul.eu/BJfz6uff',
-    'https://sks316.s-ul.eu/9SuqG8Gx',
-    'https://sks316.s-ul.eu/Y2Or6mPE',
-    'https://sks316.s-ul.eu/ypsXiUS7',
-    'https://sks316.s-ul.eu/jDGCCjHR',
-    'https://sks316.s-ul.eu/5JRcSIoE',
-    'https://sks316.s-ul.eu/lnKH4isg',
-    'https://sks316.s-ul.eu/h7I1GBaA',
-    'https://sks316.s-ul.eu/9W67AK4F',
-    'https://sks316.s-ul.eu/OVvqX99d',
-    'https://sks316.s-ul.eu/4uJVEJBW',
-    'https://sks316.s-ul.eu/vpgUHKmx',
-    'https://sks316.s-ul.eu/xC6oxdDy',
-    'https://sks316.s-ul.eu/sFdReD4o',
-    'https://sks316.s-ul.eu/HyL6dWqu',
-    'https://sks316.s-ul.eu/dA1kT7KA',
-]
-
 f_meme =[ #--List of images for F command--#
     'https://sks316.s-ul.eu/4UcpmYzH',
     'https://sks316.s-ul.eu/sRhWN9Jh',
@@ -192,15 +118,6 @@ class Fun(commands.Cog):
         embed = discord.Embed(title="<:meloetta_aria:598168128345604127> Here you go, a cute Meloetta! :smile:",color=0x9fdf42)
         embed.add_field(name='List of image sources:', value="https://pastebin.com/cRd5vguH")
         embed.set_image(url=random.choice(melo))
-        embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
-        await ctx.send(embed=embed)
-
-    @commands.command()
-    @commands.cooldown(3, 5, commands.BucketType.user)
-    async def bowsette(self, ctx):
-        embed = discord.Embed(title="<:bowsette:634951591748698132> Rawr!~",color=0xfae7a3)
-        embed.add_field(name='List of image sources:', value="https://pastebin.com/8PrALCkX")
-        embed.set_image(url=random.choice(bowsette))
         embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
 
