@@ -203,12 +203,12 @@ class Fun(commands.Cog):
                         if pkmn_hiddenability == None:
                             embed.add_field(name='Ability', value=pkmn_ability1)
                         else:
-                            embed.add_field(name='Abilities', value=pkmn_ability1 + ";\n **Hidden:** " + pkmn_hiddenability)
+                            embed.add_field(name='Abilities', value=pkmn_ability1 + ";\n**Hidden:** " + pkmn_hiddenability)
                     else:
                         if pkmn_hiddenability == None:
                             embed.add_field(name='Abilities', value=pkmn_ability1 + ", " + pkmn_ability2)
                         else:
-                            embed.add_field(name='Abilities', value=pkmn_ability1 + ", " + pkmn_ability2 + ";\n **Hidden:** " + pkmn_hiddenability)
+                            embed.add_field(name='Abilities', value=pkmn_ability1 + ", " + pkmn_ability2 + ";\n**Hidden:** " + pkmn_hiddenability)
                     embed.add_field(name='Generation Introduced', value="Gen " + pkmn_gen)
                     embed.set_thumbnail(url=pkmn_img)
                     embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
