@@ -74,6 +74,149 @@ class General(commands.Cog):
                 return await loading.edit(content=':x: No search results were found. Check your spelling and try again.')
             await loading.edit(content="<:youtube:609300907343216650> Search result for **" + arg + "**: http://www.youtube.com/watch?v=" + result)
 
+    @commands.command(aliases=["definition", "dictionary"])
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def define(self, ctx, *, arg):
+        msg = await ctx.send("<a:loading:598027019447435285> Looking for a definition...")
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get('https://mydictionaryapi.appspot.com/?define=' + arg + "&lang=en") as r:
+                    result = await r.json()
+                    word = result[0]['word']
+                    try:
+                        origin = result[0]['origin']
+                    except KeyError:
+                        origin = None
+                    try:
+                        noun_def = result[0]['meaning']['noun'][0]['definition']
+                    except KeyError:
+                        noun_def = None
+                    try:
+                        noun_eg = result[0]['meaning']['noun'][0]['example']
+                    except KeyError:
+                        noun_eg = None
+                    try:
+                        verb_def = result[0]['meaning']['verb'][0]['definition']
+                    except KeyError:
+                        verb_def = None
+                    try:
+                        verb_eg = result[0]['meaning']['verb'][0]['example']
+                    except KeyError:
+                        verb_eg = None
+                    try:
+                        prep_def = result[0]['meaning']['preposition'][0]['definition']
+                    except KeyError:
+                        prep_def = None
+                    try:
+                        prep_eg = result[0]['meaning']['preposition'][0]['example']
+                    except KeyError:
+                        prep_eg = None
+                    try:
+                        adverb_def = result[0]['meaning']['adverb'][0]['definition']
+                    except KeyError:
+                        adverb_def = None
+                    try:
+                        adverb_eg = result[0]['meaning']['adverb'][0]['example']
+                    except KeyError:
+                        adverb_eg = None
+                    try:
+                        adject_def = result[0]['meaning']['adjective'][0]['definition']
+                    except KeyError:
+                        adject_def = None
+                    try:
+                        adject_eg = result[0]['meaning']['adjective'][0]['example']
+                    except KeyError:
+                        adject_eg = None
+                    try:
+                        pronoun_def = result[0]['meaning']['pronoun'][0]['definition']
+                    except KeyError:
+                        pronoun_def = None
+                    try:
+                        pronoun_eg = result[0]['meaning']['pronoun'][0]['example']
+                    except KeyError:
+                        pronoun_eg = None
+                    try:
+                        exclaim_def = result[0]['meaning']['exclamation'][0]['definition']
+                    except KeyError:
+                        exclaim_def = None
+                    try:
+                        exclaim_eg = result[0]['meaning']['exclamation'][0]['example']
+                    except KeyError:
+                        exclaim_eg = None
+                    try:
+                        poss_determ_def = result[0]['meaning']['possessive determiner'][0]['definition']
+                    except KeyError:
+                        poss_determ_def = None
+                    try:
+                        poss_determ_eg = result[0]['meaning']['possessive determiner'][0]['example']
+                    except KeyError:
+                        poss_determ_eg = None
+                    embed = discord.Embed(title=":blue_book: Google Definition for " + word, color=0x8253c3)
+                    if origin == None:
+                        pass
+                    else:
+                        embed.add_field(name="Origin:", value=origin)
+                    if noun_def == None:
+                        pass
+                    else:
+                        if noun_eg == None:
+                            embed.add_field(name="As a Noun:", value="**Definition:** " + noun_def)
+                        else:
+                            embed.add_field(name="As a Noun:", value="**Definition:** " + noun_def + "\n**Example:** " + noun_eg)
+                    if verb_def == None:
+                        pass
+                    else:
+                        if verb_eg == None:
+                            embed.add_field(name="As a Verb:", value="**Definition:** " + verb_def)
+                        else:
+                            embed.add_field(name="As a Verb:", value="**Definition:** " + verb_def + "\n**Example:** " + verb_eg)
+                    if prep_def == None:
+                        pass
+                    else:
+                        if prep_eg == None:
+                            embed.add_field(name="As a Preposition:", value="**Definition:** " + prep_def)
+                        else:
+                            embed.add_field(name="As a Preposition:", value="**Definition:** " + prep_def + "\n**Example:** " + prep_eg)
+                    if adverb_def == None:
+                        pass
+                    else:
+                        if adverb_eg == None:
+                            embed.add_field(name="As an Adverb:", value="**Definition:** " + adverb_def)
+                        else:
+                            embed.add_field(name="As a Adverb:", value="**Definition:** " + adverb_def + "\n**Example:** " + adverb_eg)
+                    if adject_def == None:
+                        pass
+                    else:
+                        if adject_eg == None:
+                            embed.add_field(name="As an Adjective:", value="**Definition:** " + adject_def)
+                        else:
+                            embed.add_field(name="As an Adjective:", value="**Definition:** " + adject_def + "\n**Example:** " + adject_eg)
+                    if pronoun_def == None:
+                        pass
+                    else:
+                        if pronoun_eg == None:
+                            embed.add_field(name="As a Pronoun:", value="**Definition:** " + pronoun_def)
+                        else:
+                            embed.add_field(name="As a Pronoun:", value="**Definition:** " + pronoun_def + "\n**Example:** " + pronoun_eg)
+                    if exclaim_def == None:
+                        pass
+                    else:
+                        if exclaim_eg == None:
+                            embed.add_field(name="As an Exclamation:", value="**Definition:** " + exclaim_def)
+                        else:
+                            embed.add_field(name="As an Exclamation:", value="**Definition:** " + exclaim_def + "\n**Example:** " + exclaim_eg)
+                    if poss_determ_def == None:
+                        pass
+                    else:
+                        if poss_determ_eg == None:
+                            embed.add_field(name="As a Possessive Determiner:", value="**Definition:** " + poss_determ_def)
+                        else:
+                            embed.add_field(name="As a Possessive Determiner:", value="**Definition:** " + poss_determ_def + "\n**Example:** " + poss_determ_eg)
+                    embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                    await msg.edit(content='',embed=embed)
+        except:
+            await msg.edit(content=":x: Sorry, I couldn't find that word. Check your spelling and try again.")
+
     @commands.command()
     async def ping(self, ctx):
         await ctx.send(f":ping_pong: Pong! **{self.bot.latency * 1000:.0f}**ms")
@@ -114,7 +257,7 @@ class General(commands.Cog):
     @commands.command(pass_context=True)
     async def help(self, ctx):
         embed = discord.Embed(title=botver, description="The command prefix is `>`. To run a command, you must begin a message with `>`. \nFor those that don't want to see them, I've given NSFW commands their own help message. To see them, run `>nsfwhelp`.", color=0x8253c3)
-        embed.add_field(name="General:", value="**>help** - DMs you this help message. \n**>nsfwhelp** - DMs you the help message for NSFW commands. \n**>info** - Info about Mewtwo. \n**>ping** - Pong! Returns the bot's latency. Aliases: **>pong** \n**>avatar** - Gets the avatar for a specified user. If no user is specified, your avatar is sent instead. Aliases: **>avy**\n**>google** - Searches Google for a specified query and returns the first result. Aliases: **>g, >gsearch** \n**>youtube** - Searches YouTube for a specified query and returns the first result. Aliases: **>yt, >ytsearch** \n**>server** - Shows information about the server. Aliases: **>serverinfo**", inline=False)
+        embed.add_field(name="General:", value="**>help** - DMs you this help message. \n**>nsfwhelp** - DMs you the help message for NSFW commands. \n**>info** - Info about Mewtwo. \n**>ping** - Pong! Returns the bot's latency. Aliases: **>pong** \n**>avatar** - Gets the avatar for a specified user. If no user is specified, your avatar is sent instead. Aliases: **>avy**\n**>google** - Searches Google for a specified query and returns the first result. Aliases: **>g, >gsearch** \n**>youtube** - Searches YouTube for a specified query and returns the first result. Aliases: **>yt, >ytsearch** \n**>define** - Returns the first definitions for all variants of a word from the [unofficial Google Dictionary API](https://github.com/meetDeveloper/googleDictionaryAPI), with examples if applicable. Aliases: **>definition, >dictionary** \n**>server** - Shows information about the server. Aliases: **>serverinfo**", inline=False)
         embed.add_field(name="Fun:", value="**>echo** - I'll say whatever you want me to! Aliases: **>say** \n**>greet** - Hello there. \n**>f** - Press F to pay respects. Aliases: **>respects** \n**>sylveon** - Posts some cute as heck Sylveon art! \n**>meloetta** - Posts some cute as heck Meloetta art! \n**>hug** - Hug someone and brighten up their day! \n**>cuddle** - Snuggle with someone! Aliases: **>snuggle** \n**>kiss** - Kiss someone! Show them your love! Aliases: **>smooch** \n**>pat** - Give someone headpats! Aliases: **>pats, >pet** \n**>nslookup** - Gets information for a Nintendo Switch game. Aliases: **>nsl, >ns, >switch** \n**>pokedex** - Gets information for a specified Pokémon. Uses the [Pokédex API by PokéDevs](https://pokedevs.gitbook.io/pokedex/). Aliases: **>pokemon, >pkmn**", inline=False)
         embed.add_field(name="Other:", value="**>bug** - Submit a bug report if anything goes wrong. \n**>suggest** - Want to see something added to the bot? Suggest it!", inline=False)
         embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
