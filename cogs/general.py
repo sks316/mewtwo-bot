@@ -153,6 +153,22 @@ class General(commands.Cog):
                         poss_determ_eg = result[0]['meaning']['possessive determiner'][0]['example']
                     except KeyError:
                         poss_determ_eg = None
+                    try:
+                        abbrev_def = result[0]['meaning']['abbreviation'][0]['definition']
+                    except KeyError:
+                        abbrev_def = None
+                    try:
+                        abbrev_eg = result[0]['meaning']['abbreviation'][0]['example']
+                    except KeyError:
+                        abbrev_eg = None
+                    try:
+                        crossref_def = result[0]['meaning']['crossReference'][0]['definition']
+                    except KeyError:
+                        crossref_def = None
+                    try:
+                        crossref_eg = result[0]['meaning']['crossReference'][0]['example']
+                    except KeyError:
+                        crossref_eg = None
                     embed = discord.Embed(title=":blue_book: Google Definition for " + word, color=0x8253c3)
                     #--Then we add see if the variables are defined and if they are, those variables to an embed and send it back to Discord--#
                     if origin == None:
@@ -215,6 +231,20 @@ class General(commands.Cog):
                             embed.add_field(name="As a Possessive Determiner:", value="**Definition:** " + poss_determ_def, inline=False)
                         else:
                             embed.add_field(name="As a Possessive Determiner:", value="**Definition:** " + poss_determ_def + "\n**Example:** " + poss_determ_eg, inline=False)
+                    if abbrev_def == None:
+                        pass
+                    else:
+                        if abbrev_eg == None:
+                            embed.add_field(name="As an Abbreviation:", value="**Definition:** " + abbrev_def, inline=False)
+                        else:
+                            embed.add_field(name="As an Abbreviation:", value="**Definition:** " + abbrev_def + "\n**Example:** " + abbrev_eg, inline=False)
+                    if crossref_def == None:
+                        pass
+                    else:
+                        if crossref_eg == None:
+                            embed.add_field(name="As a Cross-Reference:", value="**Definition:** " + crossref_def, inline=False)
+                        else:
+                            embed.add_field(name="As a Cross-Reference:", value="**Definition:** " + crossref_def + "\n**Example:** " + crossref_eg, inline=False)
                     embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                     await msg.edit(content='',embed=embed)
         except:
