@@ -218,6 +218,44 @@ class Fun(commands.Cog):
 
     @commands.command()
     @commands.cooldown(1, 5, commands.BucketType.user)
+    async def urban(self, ctx, *, arg):
+        msg = await ctx.send("<a:loading:598027019447435285> Looking for a definition...")
+        try:
+            #--First we connect to Urban Dictionary's API and get the results--#
+            async with aiohttp.ClientSession() as session:
+                async with session.get('http://api.urbandictionary.com/v0/define?term=' + arg) as r:
+                    #--Now we decode the JSON and get the variables, truncating definitions and examples if they are longer than 900 characters due to Discord API limitations and replacing example with None if blank--#
+                    result = await r.json()
+                    word = result['list'][0]['word']
+                    url = result['list'][0]['permalink']
+                    upvotes = result['list'][0]['thumbs_up']
+                    downvotes = result['list'][0]['thumbs_down']
+                    author = result['list'][0]['author']
+                    definition = result['list'][0]['definition']
+                    definition = definition.replace('[', '')
+                    definition = definition.replace(']', '')
+                    if len(definition) > 900:
+                        definition = definition[0:901]
+                        definition = definition + "[...](" + url + ")"
+                    example = result['list'][0]['example']
+                    example = example.replace('[', '')
+                    example = example.replace(']', '')
+                    if len(example) > 900:
+                        example = example[0:901]
+                        example = example + "[...](" + url + ")"
+                    if len(example) < 1:
+                        example = None
+                    embed = discord.Embed(title=":notebook: Urban Dictionary Definition for " + word, description=definition, url=url, color=0x8253c3)
+                    if example == None:
+                        pass
+                    else:
+                        embed.add_field(name="Example:", value=example, inline=False)
+                    embed.set_footer(text=botver + " by sks316#2523 - Author: " + author + " - 👍️ " + str(upvotes) + " - 👎️ " + str(downvotes), icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                    await msg.edit(content='', embed=embed)
+        except:
+            await msg.edit(content=":x: Sorry, I couldn't find that word. Check your spelling and try again.")
+    @commands.command()
+    @commands.cooldown(1, 5, commands.BucketType.user)
     async def hug(self, ctx, *, user: discord.Member = None):
         if user == None:
             return await ctx.send(":x: You need someone to hug! You can hug me if you want...")
