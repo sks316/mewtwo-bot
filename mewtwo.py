@@ -29,6 +29,7 @@ botstatus =[
         'try >sylveon!',
         'try >meloetta!',
         'in the Kanto region!',
+        'in Cerulean Cave',
         'Pokémon Red',
         'Pokémon Green',
         'Pokémon Blue',
@@ -36,6 +37,11 @@ botstatus =[
         'with hugs! 🤗',
         'with Mew under the truck',
         'Silver is valid!',
+        '#TeamTrees',
+        'with Mega Evolution',
+        'as Mega Mewtwo X',
+        'as Mega Mewtwo Y',
+        'outside of Galar',
 ]
         
 @bot.event
