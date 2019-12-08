@@ -94,6 +94,7 @@ f_meme =[ #--List of images for F command--#
     'https://sks316.s-ul.eu/6icO2tDG',
     'https://sks316.s-ul.eu/hlno0gnA',
     'https://sks316.s-ul.eu/umOkjS6D',
+    'https://sks316.s-ul.eu/kqNeFiph',
 ]
 
 class Fun(commands.Cog):
