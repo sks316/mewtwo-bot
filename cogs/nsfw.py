@@ -34,12 +34,13 @@ class NSFW(commands.Cog):
                     posts = data['posts']
                     post = random.choice(posts)
                     score = post['score']
+                    post_id = post['id']
                     image = post['file_url']
                     image = image.replace("https://r34-json.herokuapp.com/images?url=", "")
                     if image.endswith(".webm") or image.endswith(".mp4"):
-                        await loading.edit(content=":underage: Rule34 image for **" + search + "** \n\n:arrow_up: **Score:** " + score + "\n\n**Video URL:** " + image)
+                        await loading.edit(content=":underage: Rule34 image for **" + search + "** \n\n:arrow_up: **Score:** " + score + "\n\n:link: **Post URL:** <https://rule34.xxx/index.php?page=post&s=view&id=" + post_id + ">\n\n**Video URL:** " + image)
                     else:
-                        embed = discord.Embed(title=":underage: Rule34 image for **" + search + "**", description="_ _ \n:arrow_up: **Score:** " + score, color=0x8253c3)
+                        embed = discord.Embed(title=":underage: Rule34 image for **" + search + "**", description="_ _ \n:arrow_up: **Score:** " + score + "\n\n:link: **[Post URL](https://rule34.xxx/index.php?page=post&s=view&id=" + post_id + ")**", color=0x8253c3)
                         embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
@@ -59,11 +60,12 @@ class NSFW(commands.Cog):
                 try:
                     post = random.choice(data)
                     score = str(post['score'])
+                    post_id = str(post['id'])
                     image = post['file_url']
                     if image.endswith(".webm") or image.endswith(".mp4"):
-                        await loading.edit(content=":underage: Gelbooru image for **" + search + "** \n\n:arrow_up: **Score:** " + score + "\n\n**Video URL:** " + image)
+                        await loading.edit(content=":underage: Gelbooru image for **" + search + "** \n\n:arrow_up: **Score:** " + score + "\n\n:link: **Post URL:** <https://gelbooru.com/index.php?page=post&s=view&id=" + post_id + ">\n\n**Video URL:** " + image)
                     else:
-                        embed = discord.Embed(title=":underage: Gelbooru image for **" + search + "**", description="_ _ \n:arrow_up: **Score:** " + score, color=0x8253c3)
+                        embed = discord.Embed(title=":underage: Gelbooru image for **" + search + "**", description="_ _ \n:arrow_up: **Score:** " + score + "\n\n:link: **[Post URL](https://gelbooru.com/index.php?page=post&s=view&id=" + post_id + ")**", color=0x8253c3)
                         embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
@@ -103,10 +105,36 @@ class NSFW(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/classic') as fuck:
                 data = await fuck.json()
                 result = data.get('url')
-                embed = discord.Embed(title="🔞 " + ctx.author.name + " fucks " + user.name + "!",  color=0x8253c3)
+                embed = discord.Embed(title="🔞 " + ctx.author.display_name + " fucks " + user.display_name + "!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
+
+    @commands.command()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    @commands.is_nsfw()
+    async def yandere(self, ctx, *, search: str):
+        loading = await ctx.send('<a:loading:598027019447435285> Looking for an image on yande.re...')
+        #--Connect to yande.re and get first 100 results--#
+        yande_agent = {'User-Agent': 'Mewtwo Discord Bot/v2.0 https://github.com/sks316/mewtwo-bot'}
+        async with aiohttp.ClientSession(headers=yande_agent) as session:
+            async with session.get('https://yande.re/post/index.json?tags=' + search + '&limit=100') as yande:
+                data = await yande.json()
+                #--Now we attempt to extract information--#
+                try:
+                    post = random.choice(data)
+                    score = str(post['score'])
+                    post_id = str(post['id'])
+                    image = post['file_url']
+                    if image.endswith(".webm") or image.endswith(".mp4"):
+                        await loading.edit(content=":underage: yande.re image for **" + search + "** \n\n:arrow_up: **Score:** " + score + "\n\n:link: **Post URL:** <https://yande.re/post/show/" + post_id + ">\n\n**Video URL:** " + image)
+                    else:
+                        embed = discord.Embed(title=":underage: yande.re image for **" + search + "**", description="_ _ \n:arrow_up: **Score:** " + score + "\n\n:link: **[Post URL](https://yande.re/post/show/" + post_id + ")**", color=0x8253c3)
+                        embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_image(url=image)
+                        await loading.edit(content='', embed=embed)
+                except IndexError:
+                    return await loading.edit(content=":x: No results found for your query. Check your spelling and try again.")
 
     @commands.command()
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -122,11 +150,12 @@ class NSFW(commands.Cog):
                 try:
                     post = random.choice(data)
                     score = str(post['score'])
+                    post_id = str(post['id'])
                     image = post['file_url']
                     if image.endswith(".webm") or image.endswith(".mp4"):
-                        await loading.edit(content=":underage: e621 image for **" + search + "** \n\n:arrow_up: **Score:** " + score + "\n\n**Video URL:** " + image)
+                        await loading.edit(content=":underage: e621 image for **" + search + "** \n\n:arrow_up: **Score:** " + score + "\n\n:link: **Post URL:** <https://e621.net/post/show/" + post_id + ">\n\n**Video URL:** " + image)
                     else:
-                        embed = discord.Embed(title=":underage: e621 image for **" + search + "**", description="_ _ \n:arrow_up: **Score:** " + score, color=0x8253c3)
+                        embed = discord.Embed(title=":underage: e621 image for **" + search + "**", description="_ _ \n:arrow_up: **Score:** " + score + "\n\n:link: **[Post URL](https://e621.net/post/show/" + post_id + ")**", color=0x8253c3)
                         embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)

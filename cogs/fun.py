@@ -267,7 +267,7 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/hug') as hug:
                 data = await hug.json()
                 result = data.get('url')
-                embed = discord.Embed(title="🤗 " + ctx.author.name + " hugs " + user.name + "!",  color=0x8253c3)
+                embed = discord.Embed(title="🤗 " + ctx.author.display_name + " hugs " + user.display_name + "!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
@@ -284,7 +284,7 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/pat') as pat:
                 data = await pat.json()
                 result = data.get('url')
-                embed = discord.Embed(title="<a:ablobheadpats:612416610556313600> " + ctx.author.name + " gives " + user.name + " some headpats!",  color=0x8253c3)
+                embed = discord.Embed(title="<a:ablobheadpats:612416610556313600> " + ctx.author.display_name + " gives " + user.display_name + " some headpats!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
@@ -301,7 +301,7 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/cuddle') as cuddle:
                 data = await cuddle.json()
                 result = data.get('url')
-                embed = discord.Embed(title="🤗 " + ctx.author.name + " cuddles " + user.name + "!",  color=0x8253c3)
+                embed = discord.Embed(title="🤗 " + ctx.author.display_name + " cuddles " + user.display_name + "!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
@@ -318,7 +318,7 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/kiss') as kiss:
                 data = await kiss.json()
                 result = data.get('url')
-                embed = discord.Embed(title="❤ " + ctx.author.name + " kisses " + user.name + "!",  color=0x8253c3)
+                embed = discord.Embed(title="❤ " + ctx.author.display_name + " kisses " + user.display_name + "!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
@@ -335,7 +335,7 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/cuddle') as snuggle:
                 data = await snuggle.json()
                 result = data.get('url')
-                embed = discord.Embed(title="🤗 " + ctx.author.name + " snuggles " + user.name + "!",  color=0x8253c3)
+                embed = discord.Embed(title="🤗 " + ctx.author.display_name + " snuggles " + user.display_name + "!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
