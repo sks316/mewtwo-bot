@@ -275,15 +275,31 @@ class General(commands.Cog):
     async def server(self, ctx):
         level = str(ctx.guild.premium_tier)
         boosts = str(ctx.guild.premium_subscription_count)
+        region = str(ctx.guild.region)
         if boosts is 'None':
             boosts = 'Zero'
+        sregion = {
+            'brazil': ':flag_br: Brazil',
+            'europe': ':flag_eu: Europe',
+            'hongkong': ':flag_hk: Hong Kong',
+            'india': ':flag_in: India',
+            'japan': ':flag_jp: Japan',
+            'russia': ':flag_ru: Russia',
+            'singapore': ':flag_sg: Singapore',
+            'southafrica': ':flag_za: South Africa',
+            'sydney': ':flag_au: Sydney',
+            'us-central': ':flag_us: US Central',
+            'us-east': ':flag_us: US East',
+            'us-south': ':flag_us: US South',
+            'us-west': ':flag_us: US West',
+        }.get(region.lower(), region)
         embed = discord.Embed(title="ℹ Information about " + ctx.guild.name, color=0x8253c3)
         embed.add_field(name="Nitro Boost", value='Level ' + level + ", " + boosts + " boost(s)", inline=True)
         embed.add_field(name="Owner", value="{}#{}".format(ctx.guild.owner.name, ctx.guild.owner.discriminator), inline=True)
         embed.add_field(name="Created On", value="{}/{}/{}".format(ctx.guild.created_at.month, ctx.guild.created_at.day, ctx.guild.created_at.year), inline=True)
         embed.add_field(name="Member Count", value=len(ctx.guild.members), inline=True)
         embed.add_field(name="Channel Count", value=len(ctx.guild.channels), inline=True)
-        embed.add_field(name="Region", value=ctx.guild.region, inline=True)
+        embed.add_field(name="Region", value=sregion, inline=True)
         embed.set_thumbnail(url=ctx.guild.icon_url)
         embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
