@@ -50,8 +50,8 @@ async def on_ready():
     for c in cogs:
         bot.load_extension(c)
     print('Mewtwo, rewritten in Python!')
-    print('v2.0 by ' + dev.name + "#" + dev.discriminator + ' - Support: https://discord.gg/kDC9tW7')
-    print('Logged into: ' + bot.user.name + "#" + bot.user.discriminator)
+    print(f'v2.0 by {dev.name}#{dev.discriminator} - Support: https://discord.gg/kDC9tW7')
+    print(f'Logged into: {bot.user.name}#{bot.user.discriminator}')
     print('------')
 
 @tasks.loop(minutes=10.0)
@@ -108,12 +108,12 @@ async def info(ctx):
         time_format = "**{h}** hours, **{m}** minutes, and **{s}** seconds."
     uptime_stamp = time_format.format(d=days, h=hours, m=minutes, s=seconds)
     embed = discord.Embed(title=botver, description="A Discord bot by sks316#2523. It's a little project I've been working on for some time. A few people like it, but I'm not sure why!\nWant to invite me to your server? [You can do so here!](https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=8) Don't want to give me administrator permissions? Use [this invite link](https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=388160) instead. (You may need to manually edit my permissions if new features are added though...)", color=0x8253c3)
-    embed.add_field(name="Made by:", value=dev.name + "#" + dev.discriminator)
+    embed.add_field(name="Made by:", value=f"{dev.name}#{dev.discriminator}")
     embed.add_field(name="This bot is currently in:", value=f"{len(bot.guilds)} server(s)")
     embed.add_field(name="Source Code:", value="You can view Mewtwo's source code on [GitHub](https://github.com/sks316/mewtwo-bot)!", inline=False)
     embed.add_field(name="Uptime:", value="Mewtwo has been online for {}".format(uptime_stamp), inline=False)
     embed.add_field(name="Support Server:", value="[Mewtwo Dev](https://discord.gg/kDC9tW7)")
-    embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+    embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
     await ctx.send(embed=embed)
 
 bot.remove_command('help')

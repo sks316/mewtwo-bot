@@ -110,7 +110,7 @@ class Fun(commands.Cog):
     async def f(self, ctx):
         embed = discord.Embed(title='😔 Today, we pay our respects to those that have left us.', color=0x8253c3)
         embed.set_image(url=random.choice(f_meme))
-        embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+        embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
 
     @commands.command()
@@ -119,7 +119,7 @@ class Fun(commands.Cog):
         embed = discord.Embed(title="<:meloetta_aria:598168128345604127> Here you go, a cute Meloetta! :smile:",color=0x9fdf42)
         embed.add_field(name='List of image sources:', value="https://pastebin.com/cRd5vguH")
         embed.set_image(url=random.choice(melo))
-        embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+        embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
 
     @commands.command()
@@ -128,7 +128,7 @@ class Fun(commands.Cog):
         embed = discord.Embed(title="<:sylveon:597725070764277786> Here, have some cute Sylveon art :3",color=0xffccfe)
         embed.add_field(name='List of image sources:', value="https://pastebin.com/RwGHXDmS")
         embed.set_image(url=random.choice(sylv))
-        embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+        embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
 
     @commands.command(aliases=["pokemon", "pkmn"])
@@ -160,7 +160,7 @@ class Fun(commands.Cog):
 
         #--First we connect to the Pokedex API and download the Pokedex entry--#
         async with aiohttp.ClientSession() as session:
-            async with session.get('https://pokeapi.glitch.me/v1/pokemon/' + pkmn) as dex_entry:
+            async with session.get(f'https://pokeapi.glitch.me/v1/pokemon/{pkmn}') as dex_entry:
                 data = await dex_entry.json()
                 #--Now we attempt to extract information--#
                 try:
@@ -190,7 +190,7 @@ class Fun(commands.Cog):
                     except IndexError:
                         pkmn_type2 = None
                     #--Finally, we format it into a nice little embed--#
-                    embed = discord.Embed(title="<:pokeball:609749611321753669> Pokédex information for " + pkmn_name + " (#" + pkmn_no + ")", description=pkmn_desc, color=0xd82626)
+                    embed = discord.Embed(title=f"<:pokeball:609749611321753669> Pokédex information for {pkmn_name} (#{pkmn_no})", description=pkmn_desc, color=0xd82626)
                     embed.add_field(name='Height', value=pkmn_height)
                     embed.add_field(name='Weight', value=pkmn_weight)
                     embed.add_field(name='Species', value=pkmn_species)
@@ -198,21 +198,21 @@ class Fun(commands.Cog):
                     if pkmn_type2 == None:
                         embed.add_field(name='Type', value=pkmn_type1)
                     else:
-                        embed.add_field(name='Types', value=pkmn_type1 + ", " + pkmn_type2)
+                        embed.add_field(name='Types', value=f"{pkmn_type1}, {pkmn_type2}")
                     #--Detect if ability2 and hiddenability defined--#
                     if pkmn_ability2 == None:
                         if pkmn_hiddenability == None:
                             embed.add_field(name='Ability', value=pkmn_ability1)
                         else:
-                            embed.add_field(name='Abilities', value=pkmn_ability1 + ";\n**Hidden:** " + pkmn_hiddenability)
+                            embed.add_field(name='Abilities', value=f"{pkmn_ability1};\n**Hidden:** {pkmn_hiddenability}")
                     else:
                         if pkmn_hiddenability == None:
-                            embed.add_field(name='Abilities', value=pkmn_ability1 + ", " + pkmn_ability2)
+                            embed.add_field(name='Abilities', value=f"{pkmn_ability1}, {pkmn_ability2}")
                         else:
-                            embed.add_field(name='Abilities', value=pkmn_ability1 + ", " + pkmn_ability2 + ";\n**Hidden:** " + pkmn_hiddenability)
-                    embed.add_field(name='Generation Introduced', value="Gen " + pkmn_gen)
+                            embed.add_field(name='Abilities', value=f"{pkmn_ability1}, {pkmn_ability2};\n**Hidden:** {pkmn_hiddenability}")
+                    embed.add_field(name='Generation Introduced', value=f"Gen {pkmn_gen}")
                     embed.set_thumbnail(url=pkmn_img)
-                    embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                    embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                     await ctx.send(embed=embed)
                 except KeyError:
                     return await ctx.send(":x: I couldn't find any Pokémon with that name. Double-check your spelling and try again. \nIf you're certain that this Pokémon exists, file a bug report with **>bug**.")
@@ -224,7 +224,7 @@ class Fun(commands.Cog):
         try:
             #--First we connect to Urban Dictionary's API and get the results--#
             async with aiohttp.ClientSession() as session:
-                async with session.get('http://api.urbandictionary.com/v0/define?term=' + arg) as r:
+                async with session.get(f'http://api.urbandictionary.com/v0/define?term={arg}') as r:
                     #--Now we decode the JSON and get the variables, truncating definitions and examples if they are longer than 900 characters due to Discord API limitations and replacing example with None if blank--#
                     result = await r.json()
                     word = result['list'][0]['word']
@@ -237,21 +237,21 @@ class Fun(commands.Cog):
                     definition = definition.replace(']', '')
                     if len(definition) > 900:
                         definition = definition[0:901]
-                        definition = definition + "[...](" + url + ")"
+                        definition = f"{definition}[...]({url})"
                     example = result['list'][0]['example']
                     example = example.replace('[', '')
                     example = example.replace(']', '')
                     if len(example) > 900:
                         example = example[0:901]
-                        example = example + "[...](" + url + ")"
+                        example = f"{example}[...]({url})"
                     if len(example) < 1:
                         example = None
-                    embed = discord.Embed(title=":notebook: Urban Dictionary Definition for " + word, description=definition, url=url, color=0x8253c3)
+                    embed = discord.Embed(title=f":notebook: Urban Dictionary Definition for {word}", description=definition, url=url, color=0x8253c3)
                     if example == None:
                         pass
                     else:
                         embed.add_field(name="Example:", value=example, inline=False)
-                    embed.set_footer(text=botver + " by sks316#2523 - Author: " + author + " - 👍️ " + str(upvotes) + " - 👎️ " + str(downvotes), icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                    embed.set_footer(text=f"{botver} by sks316#2523 - Author: {author} - 👍️ {str(upvotes)} - 👎️ {str(downvotes)}", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                     await msg.edit(content='', embed=embed)
         except:
             await msg.edit(content=":x: Sorry, I couldn't find that word. Check your spelling and try again.")
@@ -267,9 +267,9 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/hug') as hug:
                 data = await hug.json()
                 result = data.get('url')
-                embed = discord.Embed(title="🤗 " + ctx.author.display_name + " hugs " + user.display_name + "!",  color=0x8253c3)
+                embed = discord.Embed(title=f"🤗 {ctx.author.display_name} hugs {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command(aliases=["pats", "pet"])
@@ -284,9 +284,9 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/pat') as pat:
                 data = await pat.json()
                 result = data.get('url')
-                embed = discord.Embed(title="<a:ablobheadpats:612416610556313600> " + ctx.author.display_name + " gives " + user.display_name + " some headpats!",  color=0x8253c3)
+                embed = discord.Embed(title=f"<a:ablobheadpats:612416610556313600> {ctx.author.display_name} gives {user.display_name} some headpats!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command()
@@ -301,9 +301,9 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/cuddle') as cuddle:
                 data = await cuddle.json()
                 result = data.get('url')
-                embed = discord.Embed(title="🤗 " + ctx.author.display_name + " cuddles " + user.display_name + "!",  color=0x8253c3)
+                embed = discord.Embed(title=f"🤗 {ctx.author.display_name} cuddles {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command(aliases=["smooch"])
@@ -318,9 +318,9 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/kiss') as kiss:
                 data = await kiss.json()
                 result = data.get('url')
-                embed = discord.Embed(title="❤ " + ctx.author.display_name + " kisses " + user.display_name + "!",  color=0x8253c3)
+                embed = discord.Embed(title=f"❤ {ctx.author.display_name} kisses {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command()
@@ -335,9 +335,9 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/cuddle') as snuggle:
                 data = await snuggle.json()
                 result = data.get('url')
-                embed = discord.Embed(title="🤗 " + ctx.author.display_name + " snuggles " + user.display_name + "!",  color=0x8253c3)
+                embed = discord.Embed(title=f"🤗 {ctx.author.display_name} snuggles {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command(aliases=["nsl", "ns", "switch"])
@@ -371,8 +371,8 @@ class Fun(commands.Cog):
                     embed.add_field(name="Metacritic Score", value=gm["Metacritic"]["metascore"], inline=True)
                 else:
                     embed.add_field(name="Metacritic Score", value="None found!", inline=True)
-                embed.set_image(url="https://" + gm["Image"][2:])
-                embed.set_footer(text=botver + " by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_image(url=f'https://{gm["Image"][2:]}')
+                embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await loading.edit(content='', embed=embed)
 
 def setup(bot):
