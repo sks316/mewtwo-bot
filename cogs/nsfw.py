@@ -47,6 +47,43 @@ class NSFW(commands.Cog):
                 except IndexError:
                     return await loading.edit(content=":x: No results found for your query. Check your spelling and try again.")
 
+    @commands.command(aliases=["derpy"])
+    @commands.cooldown(3, 5, commands.BucketType.user)
+    async def derpibooru(self, ctx, *, search: str):
+        loading = await ctx.send('<a:loading:598027019447435285> Looking for an image on Derpibooru...')
+        #--Check NSFW status of channel. Return only NSFW results if NSFW, return safe results if not--#
+        channel = self.bot.get_channel(ctx.channel.id)
+        try:
+            if channel.is_nsfw():
+                nsfw_toggle = "explicit"
+                derpi_filter = "56027"
+            else:
+                nsfw_toggle = "safe"
+                derpi_filter = "100073"
+        except AttributeError:
+            nsfw_toggle = "safe"
+            derpi_filter = "100073"
+        #--Connect to Derpibooru JSON API and download search data--#
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f'https://derpibooru.org/api/v1/json/search/images?q={nsfw_toggle}, {search}&filter_id={derpi_filter}') as derp:
+                data = await derp.json()
+                #--Now we attempt to extract information--#
+                try:
+                    posts = data['images']
+                    post = random.choice(posts)
+                    score = post['score']
+                    post_id = post['id']
+                    image = post['view_url']
+                    if image.endswith(".webm") or image.endswith(".mp4"):
+                        await loading.edit(content=f":horse: Derpibooru image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://derpibooru.org/images/{post_id}>\n\n:link: **Video URL:** {image}")
+                    else:
+                        embed = discord.Embed(title=f":horse: Derpibooru image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://derpibooru.org/images/{post_id})**", color=0x8253c3)
+                        embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_image(url=image)
+                        await loading.edit(content='', embed=embed)
+                except IndexError:
+                    return await loading.edit(content=":x: No results found for your query. Check your spelling and try again.")
+
     @commands.command()
     @commands.cooldown(3, 5, commands.BucketType.user)
     @commands.is_nsfw()
