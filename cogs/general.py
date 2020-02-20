@@ -81,7 +81,7 @@ class General(commands.Cog):
         try:
             #--Connect to unofficial Google Dictionary API and get results--#
             async with aiohttp.ClientSession() as session:
-                async with session.get(f'https://googledictionaryapi.eu-gb.mybluemix.net/?define={arg}&lang=en') as r:
+                async with session.get(f'https://api.dictionaryapi.dev/api/v1/entries/en/{arg}') as r:
                     #--Now we decode the JSON and get the variables, replacing them with None if they fail to define--#
                     result = await r.json()
                     word = result[0]['word']
