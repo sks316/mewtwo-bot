@@ -181,18 +181,19 @@ class NSFW(commands.Cog):
         #--Connect to e621 and get first 100 results--#
         e621_agent = {'User-Agent': 'Mewtwo Discord Bot/v2.0 https://github.com/sks316/mewtwo-bot'}
         async with aiohttp.ClientSession(headers=e621_agent) as session:
-            async with session.get(f'https://e621.net/post/index.json?tags={search}&limit=100') as esix:
+            async with session.get(f'https://e621.net/posts.json?tags={search}&limit=100') as esix:
                 data = await esix.json()
                 #--Now we attempt to extract information--#
                 try:
+                    data = data['posts']
                     post = random.choice(data)
-                    score = str(post['score'])
+                    score = str(post['score']['total'])
                     post_id = str(post['id'])
-                    image = post['file_url']
+                    image = post['file']['url']
                     if image.endswith(".webm") or image.endswith(".mp4"):
-                        await loading.edit(content=f":underage: e621 image for **{search}**\n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://e621.net/post/show/{post_id}>\n\n:link: **Video URL:** {image}")
+                        await loading.edit(content=f":underage: e621 image for **{search}**\n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://e621.net/posts/{post_id}>\n\n:link: **Video URL:** {image}")
                     else:
-                        embed = discord.Embed(title=f":underage: e621 image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://e621.net/post/show/{post_id})**", color=0x8253c3)
+                        embed = discord.Embed(title=f":underage: e621 image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://e621.net/posts/{post_id})**", color=0x8253c3)
                         embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
