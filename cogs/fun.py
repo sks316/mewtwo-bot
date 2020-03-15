@@ -219,6 +219,38 @@ class Fun(commands.Cog):
 
     @commands.command()
     @commands.cooldown(1, 5, commands.BucketType.user)
+    async def amiibo(self, ctx, *, arg):
+        #--First we connect to the Amiibo API and download the Amiibo information--#
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f'https://amiiboapi.com/api/amiibo/?name={arg}') as amiibo:
+                data = await amiibo.json()
+                #--Now we attempt to extract information--#
+                try:
+                    series = data['amiibo'][0]['amiiboSeries']
+                    character = data['amiibo'][0]['character']
+                    name = data['amiibo'][0]['name']
+                    game = data['amiibo'][0]['gameSeries']
+                    atype = data['amiibo'][0]['type']
+                    na_release = data['amiibo'][0]['release']['na']
+                    eu_release = data['amiibo'][0]['release']['eu']
+                    jp_release = data['amiibo'][0]['release']['jp']
+                    au_release = data['amiibo'][0]['release']['au']
+                    image = data['amiibo'][0]['image']
+                    #--Finally, we format it into a nice little embed--#
+                    embed = discord.Embed(title=f"<:amiibo:688255989060730880> Amiibo information for {name} ({series} series)", color=0xd82626)
+                    embed.add_field(name='Character Represented', value=character)
+                    embed.add_field(name='Amiibo Series', value=f"{series} series")
+                    embed.add_field(name='Game of Origin', value=game)
+                    embed.add_field(name='Type', value=atype)
+                    embed.add_field(name='Released', value=f":flag_us: {na_release}\n:flag_eu: {eu_release}\n:flag_jp: {jp_release}\n:flag_au: {au_release}")
+                    embed.set_thumbnail(url=image)
+                    embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                    await ctx.send(embed=embed)
+                except KeyError:
+                    return await ctx.send(":x: I couldn't find any Amiibo with that name. Double-check your spelling and try again. \nIf you're certain that this Amiibo exists, file a bug report with **>bug**.")
+
+    @commands.command()
+    @commands.cooldown(1, 5, commands.BucketType.user)
     async def urban(self, ctx, *, arg):
         msg = await ctx.send("<a:loading:598027019447435285> Looking for a definition...")
         try:

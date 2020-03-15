@@ -306,13 +306,10 @@ class General(commands.Cog):
 
     @commands.command(pass_context=True)
     async def help(self, ctx):
-        embed = discord.Embed(title=botver, description="The command prefix is `>`. To run a command, you must begin a message with `>`. \nFor those that don't want to see them, I've given NSFW commands their own help message. To see them, run `>nsfwhelp`.", color=0x8253c3)
-        embed.add_field(name="General:", value="**>help** - DMs you this help message. \n**>nsfwhelp** - DMs you the help message for NSFW commands. \n**>info** - Info about Mewtwo. \n**>ping** - Pong! Returns the bot's latency. Aliases: **>pong** \n**>avatar** - Gets the avatar for a specified user. If no user is specified, your avatar is sent instead. Aliases: **>avy**\n**>google** - Searches Google for a specified query and returns the first result. Aliases: **>g, >gsearch** \n**>youtube** - Searches YouTube for a specified query and returns the first result. Aliases: **>yt, >ytsearch** \n**>define** - Returns the first definitions for all variants of a word from the [unofficial Google Dictionary API](https://github.com/meetDeveloper/googleDictionaryAPI), with examples if applicable. Aliases: **>definition, >dictionary** \n**>server** - Shows information about the server. Aliases: **>serverinfo**", inline=False)
-        embed.add_field(name="Fun:", value="**>echo** - I'll say whatever you want me to! Aliases: **>say** \n**>greet** - Hello there. \n**>f** - Press F to pay respects. Aliases: **>respects** \n**>sylveon** - Posts some cute as heck Sylveon art! \n**>meloetta** - Posts some cute as heck Meloetta art! \n**>derpibooru** - Gets a random safe image from Derpibooru that matches the provided query. Aliases: **>derpy** \n**>hug** - Hug someone and brighten up their day! \n**>cuddle** - Snuggle with someone! Aliases: **>snuggle** \n**>kiss** - Kiss someone! Show them your love! Aliases: **>smooch** \n**>pat** - Give someone headpats! Aliases: **>pats, >pet** \n**>nslookup** - Gets information for a Nintendo Switch game. Aliases: **>nsl, >ns, >switch** \n**>urban** - Gets the first definition for a word from Urban Dictionary. \n**>pokedex** - Gets information for a specified Pokémon. Uses the [Pokédex API by PokéDevs](https://pokedevs.gitbook.io/pokedex/). Aliases: **>pokemon, >pkmn**", inline=False)
-        embed.add_field(name="Other:", value="**>bug** - Submit a bug report if anything goes wrong. \n**>suggest** - Want to see something added to the bot? Suggest it!", inline=False)
+        embed = discord.Embed(title=botver, description="The help message got too long, so it's been moved to my website to prevent clutter and DM spam. Please see [sks316's GitHub site](https://sks316.github.io/mewtwo) for the command list as well as the invite link. Apologies for any inconveniences this may cause.", color=0x8253c3)
+        embed.set_thumbnail(url="https://sks316.s-ul.eu/bsHvTCLJ")
         embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
-        await ctx.message.author.send(embed=embed)
-        await ctx.message.add_reaction("✅")
+        await ctx.send(embed=embed)
 
     @commands.command(pass_context=True)
     async def nsfwhelp(self, ctx):
