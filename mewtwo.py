@@ -10,17 +10,17 @@ import mewtwo_config as config
 print('Starting Mewtwo.py... This may take some time.')
 print('')
 
-bot = commands.Bot(command_prefix='>!', owner_id=config.owner, case_insensitive=True)
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix='>!', intents=intents, owner_id=config.owner, case_insensitive=True)
 cogs = ["cogs.general", "cogs.fun", "cogs.nsfw", "cogs.other", "cogs.admin"]
 
 start_time = datetime.datetime.utcnow()
 
 botver = "Mewtwo v2.0"
 
-botstatus =[
+botstatus = [
         'with >help',
         'Now in Python!',
-        '#BringBackNationalDex!',
         'try >help!',
         'try >google!',
         'try >info!',
@@ -36,12 +36,9 @@ botstatus =[
         'Pokémon Yellow',
         'with hugs! 🤗',
         'with Mew under the truck',
-        'Silver is valid!',
-        '#TeamTrees',
         'with Mega Evolution',
         'as Mega Mewtwo X',
         'as Mega Mewtwo Y',
-        'outside of Galar',
 ]
         
 @bot.event
