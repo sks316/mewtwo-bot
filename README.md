@@ -30,6 +30,8 @@ So we kinda sorta actually need to set up a config file first
 Go to the directory containing `mewtwo.py` then make a new file called `mewtwo_config.py`. This will be our config file.
 Next (hopefully you've already done this), go to the [Discord Developer Portal](https://discordapp.com/developers/applications/) and create an application. Once done, go to `Bot` and hit the `Add Bot` button. Once done, you should be able to get your token! **DO NOT SHARE THIS WITH ANYONE, IT WILL GIVE FULL ACCESS TO YOUR BOT.**
 
+You'll also want to enable both the Presence Intent and Server Members Intent.
+
 Now open `mewtwo_config.py` in your favorite text editor and paste the following:
 ```
 token = 'YOUR-TOKEN-HERE'
