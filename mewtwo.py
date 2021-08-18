@@ -64,7 +64,7 @@ async def before_change_status():
 @commands.is_owner()
 async def shutdown(ctx):
     await ctx.send(":wave: Done! See ya!")
-    await bot.logout()
+    await bot.close()
 
 @bot.command()
 @commands.is_owner()
