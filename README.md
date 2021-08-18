@@ -48,8 +48,8 @@ python3 mewtwo.py
 [server]: https://discord.gg/kDC9tW7
 [server-badge]: https://img.shields.io/discord/444344089878724619.svg?style=for-the-badge&logo=discord&colorB=7289DA
 
-[invite]: https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=8
+[invite]: https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=8&redirect_uri=https%3A%2F%2Fsks316.github.io%2Fmewtwo%2Fthanks&response_type=code&prompt=none
 [invite-badge]: https://img.shields.io/badge/invite%20mewtwo-click%20here-black.svg?style=for-the-badge&colorB=8253C3
 
-[secondary-invite]: https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=388160
+[secondary-invite]: https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=388160&redirect_uri=https%3A%2F%2Fsks316.github.io%2Fmewtwo%2Fthanks&response_type=code&prompt=none
 [secondary-invite-badge]: https://img.shields.io/badge/or%20use%20this%20invite-click%20here-black.svg?style=for-the-badge&colorB=8253C3
