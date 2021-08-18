@@ -5,12 +5,6 @@ Oh hello. Welcome to the repo for Mewtwo, my little bot written under Discord.py
 
 # How to run the bot
 Oh... I didn't expect that. You actually wanna run it, huh? Some emojis won't work, but that's fine I guess...
-
-
-First, let's get something out of the way: Since this is the Beta bot, the prefix is different from normal - The Beta bot's prefix is **>!**. This is not reflected in the help commands or statuses of the bot. If that bugs you, change it yourself.
-
-
-Well, here's how to host it I guess
 ## Cloning the repo
 Just do a good ol `git clone` like so:
 ```
@@ -19,7 +13,7 @@ git clone https://github.com/sks316/mewtwo-bot.git
 ## Installing dependencies
 First of all, make sure you've got Python installed. If you don't, what the hell are you even doing here install Python first you idiot
 
-Once you've installed Python or if you already had it installed like a good boy/girl, cd into the cloned directory and run the following:
+Once you've installed Python or if you already had it installed like a good human, cd into the cloned directory and run the following:
 ```
 pip install -r requirements.txt
 ```

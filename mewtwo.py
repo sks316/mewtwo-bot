@@ -11,7 +11,7 @@ print('Starting Mewtwo.py... This may take some time.')
 print('')
 
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix='>!', intents=intents, owner_id=config.owner, case_insensitive=True)
+bot = commands.Bot(command_prefix='>', intents=intents, owner_id=config.owner, case_insensitive=True)
 cogs = ["cogs.general", "cogs.fun", "cogs.nsfw", "cogs.other", "cogs.admin"]
 
 start_time = datetime.datetime.utcnow()
