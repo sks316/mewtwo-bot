@@ -1,4 +1,4 @@
-# [Mewtwo Bot](https://sks316.github.io/mewtwo)
+# [Mewtwo Bot](https://mewtwo-bot.carrd.co)
 [![server-badge][]][server] [![invite-badge][]][invite] [![secondary-invite-badge][]][secondary-invite]
 
 Oh hello. Welcome to the repo for Mewtwo, my little bot written under Discord.py. This is still a HEAVY WIP, expect some heckin' messy code. Open a PR if you wanna fix some of the places that I inevitably fucked up in.

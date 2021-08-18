@@ -245,7 +245,7 @@ class General(commands.Cog):
                             embed.add_field(name="As a Cross-Reference:", value=f"**Definition:** {crossref_def}", inline=False)
                         else:
                             embed.add_field(name="As a Cross-Reference:", value=f"**Definition:** {crossref_def}\n**Example:** {crossref_eg}", inline=False)
-                    embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                    embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                     await msg.edit(content='',embed=embed)
         except:
             #--Send error message if command fails, as it's assumed a definition isn't found--#
@@ -266,7 +266,7 @@ class General(commands.Cog):
             user = ctx.author
       embed = discord.Embed(title=f"🖼 {user.display_name}'s avatar",  color=user.color)
       embed.set_image(url=user.avatar_url_as(format=None, size=1024))
-      embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+      embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
       await ctx.send(embed=embed)
 
     @commands.command(aliases=["serverinfo"])
@@ -301,21 +301,21 @@ class General(commands.Cog):
         embed.add_field(name="Channel Count", value=len(ctx.guild.channels), inline=True)
         embed.add_field(name="Region", value=sregion, inline=True)
         embed.set_thumbnail(url=ctx.guild.icon_url)
-        embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
 
     @commands.command(pass_context=True)
     async def help(self, ctx):
-        embed = discord.Embed(title=botver, description="The help message got too long, so it's been moved to my website to prevent clutter and DM spam. Please see [sks316's GitHub site](https://sks316.github.io/mewtwo) for the command list as well as the invite link. Apologies for any inconveniences this may cause.", color=0x8253c3)
+        embed = discord.Embed(title=botver, description="The help message got too long, so it's been moved to a Carrd website to prevent clutter and DM spam. Please see [my Carrd site](https://mewtwo-bot.carrd.co) for the command list as well as the invite link. Apologies for any inconveniences this may cause.", color=0x8253c3)
         embed.set_thumbnail(url="https://sks316.s-ul.eu/bsHvTCLJ")
-        embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
 
     @commands.command(pass_context=True)
     async def nsfwhelp(self, ctx):
         embed = discord.Embed(title=botver, description="The command prefix is `>`. To run a command, you must begin a message with `>`. \n**NSFW commands will work only in NSFW channels or DMs.**", color=0x8253c3)
         embed.add_field(name="NSFW commands:", value="**>rule34** - Gets a random image from Rule34.xxx that matches the provided query. Aliases: **>r34** \n**>e621** - Gets a random image from e621 that matches the provided query. \n**>gelbooru** - Gets a random image from Gelbooru that matches the provided query. \n**>yandere** - Gets a random image from yande.re that matches the provided query. \n**>derpibooru** - Gets a random explicit image from Derpibooru that matches the provided query. Aliases: **>derpy** \n**>boobs** - Boobies! Gets a random titty image or GIF from the nekos.life API. Aliases: **>booby, >tiddy, >tits** \n**>fuck** - Fuck somebody, make them feel good! :wink:", inline=False)
-        embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.message.author.send(embed=embed)
         await ctx.message.add_reaction("🔞")
 

@@ -41,7 +41,7 @@ class NSFW(commands.Cog):
                         await loading.edit(content=f":underage: Rule34 image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://rule34.xxx/index.php?page=post&s=view&id={post_id}>\n\n:link: **Video URL:** {image}")
                     else:
                         embed = discord.Embed(title=f":underage: Rule34 image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://rule34.xxx/index.php?page=post&s=view&id={post_id})**", color=0x8253c3)
-                        embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
                 except IndexError:
@@ -78,7 +78,7 @@ class NSFW(commands.Cog):
                         await loading.edit(content=f":horse: Derpibooru image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://derpibooru.org/images/{post_id}>\n\n:link: **Video URL:** {image}")
                     else:
                         embed = discord.Embed(title=f":horse: Derpibooru image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://derpibooru.org/images/{post_id})**", color=0x8253c3)
-                        embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
                 except IndexError:
@@ -103,7 +103,7 @@ class NSFW(commands.Cog):
                         await loading.edit(content=f":underage: Gelbooru image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://gelbooru.com/index.php?page=post&s=view&id={post_id}>\n\n:link: **Video URL:** {image}")
                     else:
                         embed = discord.Embed(title=f":underage: Gelbooru image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://gelbooru.com/index.php?page=post&s=view&id={post_id})**", color=0x8253c3)
-                        embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
                 except IndexError:
@@ -126,7 +126,7 @@ class NSFW(commands.Cog):
                 result = data.get('url')
                 embed = discord.Embed(title="🔞 Boobies!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command()
@@ -144,7 +144,7 @@ class NSFW(commands.Cog):
                 result = data.get('url')
                 embed = discord.Embed(title=f"🔞 {ctx.author.display_name} fucks {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command()
@@ -167,7 +167,7 @@ class NSFW(commands.Cog):
                         await loading.edit(content=f":underage: yande.re image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://yande.re/post/show/{post_id}>\n\n:link: **Video URL:** {image}")
                     else:
                         embed = discord.Embed(title=f":underage: yande.re image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://yande.re/post/show/{post_id})**", color=0x8253c3)
-                        embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
                 except IndexError:
@@ -194,7 +194,7 @@ class NSFW(commands.Cog):
                         await loading.edit(content=f":underage: e621 image for **{search}**\n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://e621.net/posts/{post_id}>\n\n:link: **Video URL:** {image}")
                     else:
                         embed = discord.Embed(title=f":underage: e621 image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://e621.net/posts/{post_id})**", color=0x8253c3)
-                        embed.set_footer(text=f"{botver} by sks316#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
                 except IndexError:
