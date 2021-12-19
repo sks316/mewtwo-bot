@@ -408,5 +408,24 @@ class Fun(commands.Cog):
                 embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await loading.edit(content='', embed=embed)
 
+    @commands.command(aliases=["rabbit"])
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def bunny(self, ctx, *, user: discord.Member = None):
+        #--Get image from bunnies.io API--#
+        async with aiohttp.ClientSession() as session:
+            async with session.get('https://api.bunnies.io/v2/loop/random/?media=gif,png') as bunny:
+                data = await bunny.json()
+                try:
+                    image = data["media"]["gif"]
+                except:
+                    image = data["media"]["poster"]
+                seen = data["thisServed"]
+                total = data["totalServed"]
+                id = data["id"]
+                embed = discord.Embed(title=f"🐇 Bunny!!!", description=f"🔢 ID: {id}\n👀 This bunny has been seen {seen} times.\n🐰 {total} bunnies have been seen.\n🔗 https://www.bunnies.io/#{id}", color=0x8253c3)
+                embed.set_image(url=image)
+                embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                await ctx.send(embed=embed)
+
 def setup(bot):
     bot.add_cog(Fun(bot))
