@@ -20,7 +20,7 @@ botver = "Mewtwo v2.0"
 
 botstatus = [
         'with >help',
-        'Now in Python!',
+        'Now using Nextcord!',
         'try >help!',
         'try >google!',
         'try >info!',
@@ -28,6 +28,7 @@ botstatus = [
         'try >nslookup!',
         'try >sylveon!',
         'try >meloetta!',
+        'try >bunny!',
         'in the Kanto region!',
         'in Cerulean Cave',
         'Pokémon Red',
@@ -35,6 +36,7 @@ botstatus = [
         'Pokémon Blue',
         'Pokémon Yellow',
         'with hugs! 🤗',
+        'with bunnies! 🐇',
         'with Mew under the truck',
         'with Mega Evolution',
         'as Mega Mewtwo X',
@@ -46,7 +48,7 @@ async def on_ready():
     dev = bot.get_user(config.owner)
     for c in cogs:
         bot.load_extension(c)
-    print('Mewtwo, rewritten in Python!')
+    print('Mewtwo, now using Nextcord!')
     print(f'v2.0 by {dev.name}#{dev.discriminator} - Support: https://discord.gg/kDC9tW7')
     print(f'Logged into: {bot.user.name}#{bot.user.discriminator}')
     print('------')
