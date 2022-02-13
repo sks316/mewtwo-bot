@@ -1,5 +1,5 @@
-import discord
-from discord.ext import tasks, commands
+import nextcord
+from nextcord.ext import tasks, commands
 import asyncio
 import random
 import traceback
@@ -10,7 +10,7 @@ import mewtwo_config as config
 print('Starting Mewtwo.py... This may take some time.')
 print('')
 
-intents = discord.Intents.all()
+intents = nextcord.Intents.all()
 bot = commands.Bot(command_prefix='>', intents=intents, owner_id=config.owner, case_insensitive=True)
 cogs = ["cogs.general", "cogs.fun", "cogs.nsfw", "cogs.other", "cogs.admin"]
 
@@ -54,7 +54,7 @@ async def on_ready():
 @tasks.loop(minutes=10.0)
 async def change_status():
     playing = random.choice(botstatus)
-    await bot.change_presence(activity=discord.Game(name=playing))
+    await bot.change_presence(activity=nextcord.Game(name=playing))
 
 @change_status.before_loop
 async def before_change_status():
@@ -104,7 +104,7 @@ async def info(ctx):
     else:
         time_format = "**{h}** hours, **{m}** minutes, and **{s}** seconds."
     uptime_stamp = time_format.format(d=days, h=hours, m=minutes, s=seconds)
-    embed = discord.Embed(title=botver, description="A Discord bot by PrincessLillie#2523. It's a little project I've been working on for some time. A few people like it, but I'm not sure why!\nWant to invite me to your server? [You can do so here!](https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=8&redirect_uri=https%3A%2F%2Fsks316.github.io%2Fmewtwo%2Fthanks&response_type=code&prompt=none) Don't want to give me administrator permissions? Use [this invite link](https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=388160&redirect_uri=https%3A%2F%2Fsks316.github.io%2Fmewtwo%2Fthanks&response_type=code&prompt=none) instead. (You may need to manually edit my permissions if new features are added though...)", color=0x8253c3)
+    embed = nextcord.Embed(title=botver, description="A Discord bot by PrincessLillie#2523. It's a little project I've been working on for some time. A few people like it, but I'm not sure why!\nWant to invite me to your server? [You can do so here!](https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=8&redirect_uri=https%3A%2F%2Fsks316.github.io%2Fmewtwo%2Fthanks&response_type=code&prompt=none) Don't want to give me administrator permissions? Use [this invite link](https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=388160&redirect_uri=https%3A%2F%2Fsks316.github.io%2Fmewtwo%2Fthanks&response_type=code&prompt=none) instead. (You may need to manually edit my permissions if new features are added though...)", color=0x8253c3)
     embed.add_field(name="Made by:", value=f"{dev.name}#{dev.discriminator}")
     embed.add_field(name="This bot is currently in:", value=f"{len(bot.guilds)} server(s)")
     embed.add_field(name="Source Code:", value="You can view Mewtwo's source code on [GitHub](https://github.com/sks316/mewtwo-bot)!", inline=False)
@@ -146,7 +146,7 @@ async def on_command_error(ctx, error):
             await ctx.message.delete(delay=5)
             return await err.delete(delay=5)
 
-        elif isinstance(error, discord.Forbidden):
+        elif isinstance(error, nextcord.Forbidden):
             err = await ctx.send(f":x: I don't have sufficient permissions to do something. If you tried running **>help**, make sure your DMs are open. Otherwise, please have an administrator check my permissions.")
             await ctx.message.delete(delay=10)
             return await err.delete(delay=10)
