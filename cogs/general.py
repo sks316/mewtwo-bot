@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import asyncio
 import aiohttp
 from bs4 import BeautifulSoup
@@ -169,7 +169,7 @@ class General(commands.Cog):
                         crossref_eg = result[0]['meaning']['crossReference'][0]['example']
                     except KeyError:
                         crossref_eg = None
-                    embed = discord.Embed(title=f":blue_book: Google Definition for {word}", color=0x8253c3)
+                    embed = nextcord.Embed(title=f":blue_book: Google Definition for {word}", color=0x8253c3)
                     #--Then we add see if the variables are defined and if they are, those variables to an embed and send it back to Discord--#
                     if origin == None:
                         pass
@@ -261,10 +261,10 @@ class General(commands.Cog):
 
     @commands.command(aliases=["avy"])
     @commands.cooldown(3, 5, commands.BucketType.user)
-    async def avatar(self, ctx, *, user: discord.Member = None):
+    async def avatar(self, ctx, *, user: nextcord.Member = None):
       if user == None:
             user = ctx.author
-      embed = discord.Embed(title=f"🖼 {user.display_name}'s avatar",  color=user.color)
+      embed = nextcord.Embed(title=f"🖼 {user.display_name}'s avatar",  color=user.color)
       embed.set_image(url=user.avatar_url_as(format=None, size=1024))
       embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
       await ctx.send(embed=embed)
@@ -293,7 +293,7 @@ class General(commands.Cog):
             'us-south': ':flag_us: US South',
             'us-west': ':flag_us: US West',
         }.get(region)
-        embed = discord.Embed(title=f"ℹ Information about {ctx.guild.name}", color=0x8253c3)
+        embed = nextcord.Embed(title=f"ℹ Information about {ctx.guild.name}", color=0x8253c3)
         embed.add_field(name="Nitro Boost", value=f'Level {level}, {boosts} boost(s)', inline=True)
         embed.add_field(name="Owner", value=f"{ctx.guild.owner.name}#{ctx.guild.owner.discriminator}", inline=True)
         embed.add_field(name="Created On", value=f"{ctx.guild.created_at.month}/{ctx.guild.created_at.day}/{ctx.guild.created_at.year}", inline=True)
@@ -306,14 +306,14 @@ class General(commands.Cog):
 
     @commands.command(pass_context=True)
     async def help(self, ctx):
-        embed = discord.Embed(title=botver, description="The help message got too long, so it's been moved to a Carrd website to prevent clutter and DM spam. Please see [my Carrd site](https://mewtwo-bot.carrd.co) for the command list as well as the invite link. Apologies for any inconveniences this may cause.", color=0x8253c3)
+        embed = nextcord.Embed(title=botver, description="The help message got too long, so it's been moved to a Carrd website to prevent clutter and DM spam. Please see [my Carrd site](https://mewtwo-bot.carrd.co) for the command list as well as the invite link. Apologies for any inconveniences this may cause.", color=0x8253c3)
         embed.set_thumbnail(url="https://sks316.s-ul.eu/bsHvTCLJ")
         embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
 
     @commands.command(pass_context=True)
     async def nsfwhelp(self, ctx):
-        embed = discord.Embed(title=botver, description="The command prefix is `>`. To run a command, you must begin a message with `>`. \n**NSFW commands will work only in NSFW channels or DMs.**", color=0x8253c3)
+        embed = nextcord.Embed(title=botver, description="The command prefix is `>`. To run a command, you must begin a message with `>`. \n**NSFW commands will work only in NSFW channels or DMs.**", color=0x8253c3)
         embed.add_field(name="NSFW commands:", value="**>rule34** - Gets a random image from Rule34.xxx that matches the provided query. Aliases: **>r34** \n**>e621** - Gets a random image from e621 that matches the provided query. \n**>gelbooru** - Gets a random image from Gelbooru that matches the provided query. \n**>yandere** - Gets a random image from yande.re that matches the provided query. \n**>derpibooru** - Gets a random explicit image from Derpibooru that matches the provided query. Aliases: **>derpy** \n**>boobs** - Boobies! Gets a random titty image or GIF from the nekos.life API. Aliases: **>booby, >tiddy, >tits** \n**>fuck** - Fuck somebody, make them feel good! :wink:", inline=False)
         embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.message.author.send(embed=embed)

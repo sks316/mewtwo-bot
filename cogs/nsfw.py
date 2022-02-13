@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import aiohttp
 import asyncio
 import random
@@ -40,7 +40,7 @@ class NSFW(commands.Cog):
                     if image.endswith(".webm") or image.endswith(".mp4"):
                         await loading.edit(content=f":underage: Rule34 image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://rule34.xxx/index.php?page=post&s=view&id={post_id}>\n\n:link: **Video URL:** {image}")
                     else:
-                        embed = discord.Embed(title=f":underage: Rule34 image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://rule34.xxx/index.php?page=post&s=view&id={post_id})**", color=0x8253c3)
+                        embed = nextcord.Embed(title=f":underage: Rule34 image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://rule34.xxx/index.php?page=post&s=view&id={post_id})**", color=0x8253c3)
                         embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
@@ -77,7 +77,7 @@ class NSFW(commands.Cog):
                     if image.endswith(".webm") or image.endswith(".mp4"):
                         await loading.edit(content=f":horse: Derpibooru image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://derpibooru.org/images/{post_id}>\n\n:link: **Video URL:** {image}")
                     else:
-                        embed = discord.Embed(title=f":horse: Derpibooru image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://derpibooru.org/images/{post_id})**", color=0x8253c3)
+                        embed = nextcord.Embed(title=f":horse: Derpibooru image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://derpibooru.org/images/{post_id})**", color=0x8253c3)
                         embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
@@ -102,7 +102,7 @@ class NSFW(commands.Cog):
                     if image.endswith(".webm") or image.endswith(".mp4"):
                         await loading.edit(content=f":underage: Gelbooru image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://gelbooru.com/index.php?page=post&s=view&id={post_id}>\n\n:link: **Video URL:** {image}")
                     else:
-                        embed = discord.Embed(title=f":underage: Gelbooru image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://gelbooru.com/index.php?page=post&s=view&id={post_id})**", color=0x8253c3)
+                        embed = nextcord.Embed(title=f":underage: Gelbooru image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://gelbooru.com/index.php?page=post&s=view&id={post_id})**", color=0x8253c3)
                         embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
@@ -114,7 +114,7 @@ class NSFW(commands.Cog):
     @commands.command(aliases=["booby", "tiddy", "tits"])
     @commands.cooldown(1, 5, commands.BucketType.user)
     @commands.is_nsfw()
-    async def boobs(self, ctx, user: discord.Member = None):
+    async def boobs(self, ctx, user: nextcord.Member = None):
         boobs =[
             'https://nekos.life/api/v2/img/boobs',
             'https://nekos.life/api/v2/img/tits',
@@ -124,7 +124,7 @@ class NSFW(commands.Cog):
             async with session.get(random.choice(boobs)) as tiddy:
                 data = await tiddy.json()
                 result = data.get('url')
-                embed = discord.Embed(title="🔞 Boobies!",  color=0x8253c3)
+                embed = nextcord.Embed(title="🔞 Boobies!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
@@ -132,7 +132,7 @@ class NSFW(commands.Cog):
     @commands.command()
     @commands.cooldown(1, 5, commands.BucketType.user)
     @commands.is_nsfw()
-    async def fuck(self, ctx, *, user: discord.Member = None):
+    async def fuck(self, ctx, *, user: nextcord.Member = None):
         if user == None:
             return await ctx.send(":x: You need someone to fuck! Make sure they consent to it first...")
         if user == ctx.author:
@@ -142,7 +142,7 @@ class NSFW(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/classic') as fuck:
                 data = await fuck.json()
                 result = data.get('url')
-                embed = discord.Embed(title=f"🔞 {ctx.author.display_name} fucks {user.display_name}!",  color=0x8253c3)
+                embed = nextcord.Embed(title=f"🔞 {ctx.author.display_name} fucks {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
@@ -166,7 +166,7 @@ class NSFW(commands.Cog):
                     if image.endswith(".webm") or image.endswith(".mp4"):
                         await loading.edit(content=f":underage: yande.re image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://yande.re/post/show/{post_id}>\n\n:link: **Video URL:** {image}")
                     else:
-                        embed = discord.Embed(title=f":underage: yande.re image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://yande.re/post/show/{post_id})**", color=0x8253c3)
+                        embed = nextcord.Embed(title=f":underage: yande.re image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://yande.re/post/show/{post_id})**", color=0x8253c3)
                         embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
@@ -193,7 +193,7 @@ class NSFW(commands.Cog):
                     if image.endswith(".webm") or image.endswith(".mp4"):
                         await loading.edit(content=f":underage: e621 image for **{search}**\n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://e621.net/posts/{post_id}>\n\n:link: **Video URL:** {image}")
                     else:
-                        embed = discord.Embed(title=f":underage: e621 image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://e621.net/posts/{post_id})**", color=0x8253c3)
+                        embed = nextcord.Embed(title=f":underage: e621 image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://e621.net/posts/{post_id})**", color=0x8253c3)
                         embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)

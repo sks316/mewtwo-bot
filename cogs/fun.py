@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import asyncio
 import random
 import aiohttp
@@ -108,7 +108,7 @@ class Fun(commands.Cog):
     @commands.command(aliases=["respects"])
     @commands.cooldown(3, 5, commands.BucketType.user)
     async def f(self, ctx):
-        embed = discord.Embed(title='😔 Today, we pay our respects to those that have left us.', color=0x8253c3)
+        embed = nextcord.Embed(title='😔 Today, we pay our respects to those that have left us.', color=0x8253c3)
         embed.set_image(url=random.choice(f_meme))
         embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
@@ -116,7 +116,7 @@ class Fun(commands.Cog):
     @commands.command()
     @commands.cooldown(3, 5, commands.BucketType.user)
     async def meloetta(self, ctx):
-        embed = discord.Embed(title="<:meloetta_aria:598168128345604127> Here you go, a cute Meloetta! :smile:",color=0x9fdf42)
+        embed = nextcord.Embed(title="<:meloetta_aria:598168128345604127> Here you go, a cute Meloetta! :smile:",color=0x9fdf42)
         embed.add_field(name='List of image sources:', value="https://pastebin.com/cRd5vguH")
         embed.set_image(url=random.choice(melo))
         embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
@@ -125,7 +125,7 @@ class Fun(commands.Cog):
     @commands.command()
     @commands.cooldown(3, 5, commands.BucketType.user)
     async def sylveon(self, ctx):
-        embed = discord.Embed(title="<:sylveon:597725070764277786> Here, have some cute Sylveon art :3",color=0xffccfe)
+        embed = nextcord.Embed(title="<:sylveon:597725070764277786> Here, have some cute Sylveon art :3",color=0xffccfe)
         embed.add_field(name='List of image sources:', value="https://pastebin.com/RwGHXDmS")
         embed.set_image(url=random.choice(sylv))
         embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
@@ -191,7 +191,7 @@ class Fun(commands.Cog):
                         except IndexError:
                             pkmn_type2 = None
                         #--Finally, we format it into a nice little embed--#
-                        embed = discord.Embed(title=f"<:pokeball:609749611321753669> Pokédex information for {pkmn_name} (#{pkmn_no})", description=pkmn_desc, color=0xd82626)
+                        embed = nextcord.Embed(title=f"<:pokeball:609749611321753669> Pokédex information for {pkmn_name} (#{pkmn_no})", description=pkmn_desc, color=0xd82626)
                         embed.add_field(name='Height', value=pkmn_height)
                         embed.add_field(name='Weight', value=pkmn_weight)
                         embed.add_field(name='Species', value=pkmn_species)
@@ -238,7 +238,7 @@ class Fun(commands.Cog):
                     au_release = data['amiibo'][0]['release']['au']
                     image = data['amiibo'][0]['image']
                     #--Finally, we format it into a nice little embed--#
-                    embed = discord.Embed(title=f"<:amiibo:688255989060730880> Amiibo information for {name} ({series} series)", color=0xd82626)
+                    embed = nextcord.Embed(title=f"<:amiibo:688255989060730880> Amiibo information for {name} ({series} series)", color=0xd82626)
                     embed.add_field(name='Character Represented', value=character)
                     embed.add_field(name='Amiibo Series', value=f"{series} series")
                     embed.add_field(name='Game of Origin', value=game)
@@ -279,7 +279,7 @@ class Fun(commands.Cog):
                         example = f"{example}[...]({url})"
                     if len(example) < 1:
                         example = None
-                    embed = discord.Embed(title=f":notebook: Urban Dictionary Definition for {word}", description=definition, url=url, color=0x8253c3)
+                    embed = nextcord.Embed(title=f":notebook: Urban Dictionary Definition for {word}", description=definition, url=url, color=0x8253c3)
                     if example == None:
                         pass
                     else:
@@ -290,7 +290,7 @@ class Fun(commands.Cog):
             await msg.edit(content=":x: Sorry, I couldn't find that word. Check your spelling and try again.")
     @commands.command()
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def hug(self, ctx, *, user: discord.Member = None):
+    async def hug(self, ctx, *, user: nextcord.Member = None):
         if user == None:
             return await ctx.send(":x: You need someone to hug! You can hug me if you want...")
         if user == ctx.author:
@@ -300,14 +300,14 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/hug') as hug:
                 data = await hug.json()
                 result = data.get('url')
-                embed = discord.Embed(title=f"🤗 {ctx.author.display_name} hugs {user.display_name}!",  color=0x8253c3)
+                embed = nextcord.Embed(title=f"🤗 {ctx.author.display_name} hugs {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command(aliases=["pats", "pet"])
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def pat(self, ctx, *, user: discord.Member = None):
+    async def pat(self, ctx, *, user: nextcord.Member = None):
         if user == None:
             return await ctx.send(":x: You need someone to give headpats to! You can give me a headpat if you want...")
         if user == ctx.author:
@@ -317,14 +317,14 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/pat') as pat:
                 data = await pat.json()
                 result = data.get('url')
-                embed = discord.Embed(title=f"<a:ablobheadpats:612416610556313600> {ctx.author.display_name} gives {user.display_name} some headpats!",  color=0x8253c3)
+                embed = nextcord.Embed(title=f"<a:ablobheadpats:612416610556313600> {ctx.author.display_name} gives {user.display_name} some headpats!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command()
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def cuddle(self, ctx, *, user: discord.Member = None):
+    async def cuddle(self, ctx, *, user: nextcord.Member = None):
         if user == None:
             return await ctx.send(":x: You need someone to cuddle! You can cuddle me if you want...")
         if user == ctx.author:
@@ -334,14 +334,14 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/cuddle') as cuddle:
                 data = await cuddle.json()
                 result = data.get('url')
-                embed = discord.Embed(title=f"🤗 {ctx.author.display_name} cuddles {user.display_name}!",  color=0x8253c3)
+                embed = nextcord.Embed(title=f"🤗 {ctx.author.display_name} cuddles {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command(aliases=["smooch"])
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def kiss(self, ctx, *, user: discord.Member = None):
+    async def kiss(self, ctx, *, user: nextcord.Member = None):
         if user == None:
             return await ctx.send(":x: You need someone to kiss! You can kiss me if you want...")
         if user == ctx.author:
@@ -351,14 +351,14 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/kiss') as kiss:
                 data = await kiss.json()
                 result = data.get('url')
-                embed = discord.Embed(title=f"❤ {ctx.author.display_name} kisses {user.display_name}!",  color=0x8253c3)
+                embed = nextcord.Embed(title=f"❤ {ctx.author.display_name} kisses {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command()
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def snuggle(self, ctx, *, user: discord.Member = None):
+    async def snuggle(self, ctx, *, user: nextcord.Member = None):
         if user == None:
             return await ctx.send(":x: You need someone to cuddle! You can cuddle me if you want...")
         if user == ctx.author:
@@ -368,7 +368,7 @@ class Fun(commands.Cog):
             async with session.get('https://nekos.life/api/v2/img/cuddle') as snuggle:
                 data = await snuggle.json()
                 result = data.get('url')
-                embed = discord.Embed(title=f"🤗 {ctx.author.display_name} snuggles {user.display_name}!",  color=0x8253c3)
+                embed = nextcord.Embed(title=f"🤗 {ctx.author.display_name} snuggles {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
                 embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
@@ -393,7 +393,7 @@ class Fun(commands.Cog):
                     await loading.edit(content=":x: I couldn't find that game. Double-check your spelling and try again.")
                     return
                 #--Now we format this into a nice embed to send back to Discord--#
-                embed = discord.Embed(title="ℹ Nintendo Switch game information", color=0xff0000)
+                embed = nextcord.Embed(title="ℹ Nintendo Switch game information", color=0xff0000)
                 embed.add_field(name="Title", value=gm["Title"], inline=True)
                 #embed.add_field(name="Price", value="${}.{}".format(str(gm["Prices"]["US"])[0:2], str(gm["Prices"]["US"])[-2:]), inline=True)
                 dt = dateutil.parser.parse(gm["Published"])
@@ -410,7 +410,7 @@ class Fun(commands.Cog):
 
     @commands.command(aliases=["rabbit"])
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def bunny(self, ctx, *, user: discord.Member = None):
+    async def bunny(self, ctx, *, user: nextcord.Member = None):
         #--Get image from bunnies.io API--#
         async with aiohttp.ClientSession() as session:
             async with session.get('https://api.bunnies.io/v2/loop/random/?media=gif,png') as bunny:
@@ -422,7 +422,7 @@ class Fun(commands.Cog):
                 seen = data["thisServed"]
                 total = data["totalServed"]
                 id = data["id"]
-                embed = discord.Embed(title=f"🐇 Bunny!!!", description=f"🔢 ID: {id}\n👀 This bunny has been seen {seen} times.\n🐰 {total} bunnies have been seen.\n🔗 https://www.bunnies.io/#{id}", color=0x8253c3)
+                embed = nextcord.Embed(title=f"🐇 Bunny!!!", description=f"🔢 ID: {id}\n👀 This bunny has been seen {seen} times.\n🐰 {total} bunnies have been seen.\n🔗 https://www.bunnies.io/#{id}", color=0x8253c3)
                 embed.set_image(url=image)
                 embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)

@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import os
 import io
 import textwrap
@@ -16,7 +16,7 @@ class Admin(commands.Cog):
     @commands.command(pass_context=True)
     @commands.is_owner()
     async def adminhelp(self, ctx):
-        embed = discord.Embed(title=botver, description="Administrator commands for Mewtwo. \n The command prefix is `>`. To run a command, you must begin a message with `>`.", color=0x8253c3)
+        embed = nextcord.Embed(title=botver, description="Administrator commands for Mewtwo. \n The command prefix is `>`. To run a command, you must begin a message with `>`.", color=0x8253c3)
         embed.add_field(name="Commands:", value="**>shutdown** - Shuts down the bot. \n**>changestatus** - Changes the bot's Playing status. \n**>reload** - Reloads all cogs.\n**>serverlist** - Outputs a list of servers the bot is in to the terminal. \n**>clearterm** - Clears the terminal. \n**>eval** - Evaluate provided Python code.", inline=False)
         embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.message.author.send(embed=embed)
@@ -25,14 +25,14 @@ class Admin(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def changestatus(self, ctx, *, arg):
-        await self.bot.change_presence(activity=discord.Game(name=arg))
+        await self.bot.change_presence(activity=nextcord.Game(name=arg))
         await ctx.send(":ok_hand: Done.")
 
     @commands.command(pass_context=True)
     @commands.is_owner()
     async def clearterm(self, ctx):
         os.system('clear')
-        print('Mewtwo, rewritten in Python!')
+        print('Mewtwo, now in Nextcord!')
         print('v2.0 by PrincessLillie#2523 - Support: https://discord.gg/kDC9tW7')
         print(f'Logged into: {self.bot.user.name}#{self.bot.user.discriminator}')
         print('------')
