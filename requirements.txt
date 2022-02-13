@@ -1,4 +1,4 @@
-discord.py
+nextcord
 asyncio
 aiohttp
 python-dateutil
