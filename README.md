@@ -1,6 +1,8 @@
 # [Mewtwo Bot](https://mewtwo-bot.carrd.co)
 [![server-badge][]][server] [![invite-badge][]][invite] [![secondary-invite-badge][]][secondary-invite]
 
+[![love-badge][]][love] [![nextcord-badge][]][nextcord]
+
 Oh hello. Welcome to the repo for Mewtwo, my little bot written under Nextcord. This is still a HEAVY WIP, expect some heckin' messy code. Open a PR if you wanna fix some of the places that I inevitably fucked up in.
 
 # How to run the bot
@@ -53,3 +55,9 @@ python3 mewtwo.py
 
 [secondary-invite]: https://discordapp.com/oauth2/authorize?client_id=442154636028280843&scope=bot&permissions=388160&redirect_uri=https%3A%2F%2Fsks316.github.io%2Fmewtwo%2Fthanks&response_type=code&prompt=none
 [secondary-invite-badge]: https://img.shields.io/badge/or%20use%20this%20invite-click%20here-black.svg?style=for-the-badge&colorB=8253C3
+
+[love]: https://lillie2523.carrd.co
+[love-badge]: https://custom-icon-badges.herokuapp.com/badge/-Made%20with%20love...-555555?style=for-the-badge&logo=heart
+
+[nextcord]: https://github.com/nextcord/nextcord
+[nextcord-badge]: https://custom-icon-badges.herokuapp.com/badge/-...and%20Nextcord-555555?style=for-the-badge&logo=nextcord
