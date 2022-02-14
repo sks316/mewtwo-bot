@@ -265,7 +265,7 @@ class General(commands.Cog):
       if user == None:
             user = ctx.author
       embed = nextcord.Embed(title=f"🖼 {user.display_name}'s avatar",  color=user.color)
-      embed.set_image(url=user.avatar_url_as(format=None, size=1024))
+      embed.set_image(url=user.display_avatar.url)
       embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
       await ctx.send(embed=embed)
 
@@ -300,7 +300,7 @@ class General(commands.Cog):
         embed.add_field(name="Member Count", value=len(ctx.guild.members), inline=True)
         embed.add_field(name="Channel Count", value=len(ctx.guild.channels), inline=True)
         embed.add_field(name="Region", value=sregion, inline=True)
-        embed.set_thumbnail(url=ctx.guild.icon_url)
+        embed.set_thumbnail(url=ctx.guild.icon.url)
         embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
 

@@ -82,12 +82,6 @@ class Admin(commands.Cog):
                 await ctx.message.add_reaction('\u2705')
             except Exception: 
                 pass
-            if ret is None:
-                if value:
-                    await ctx.codeblock(value)
-            else:
-                self._last_result = ret
-                await ctx.codeblock(f"{value}{ret}")
 
     @commands.command()
     @commands.is_owner()

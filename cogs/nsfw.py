@@ -95,6 +95,7 @@ class NSFW(commands.Cog):
                 data = await gel.json()
                 #--Now we attempt to extract information--#
                 try:
+                    data = data['post']
                     post = random.choice(data)
                     score = str(post['score'])
                     post_id = str(post['id'])
