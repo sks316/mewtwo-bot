@@ -2,7 +2,7 @@ import nextcord
 from nextcord.ext import commands
 import mewtwo_config as config
 
-botver = "Mewtwo v2.0"
+botver = "Mewtwo v2.1"
 
 class Other(commands.Cog):
     def __init__(self, bot):

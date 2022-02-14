@@ -11,7 +11,7 @@ import requests
 import datetime
 import mewtwo_config as config
 
-botver = "Mewtwo v2.0"
+botver = "Mewtwo v2.1"
 
 async def get_dev(self):
     dev = self.bot.get_user(config.owner)

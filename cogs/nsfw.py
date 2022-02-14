@@ -13,7 +13,7 @@ import requests
 import typing
 import json
 
-botver = "Mewtwo v2.0"
+botver = "Mewtwo v2.1"
 
 
 class NSFW(commands.Cog):
@@ -154,7 +154,7 @@ class NSFW(commands.Cog):
     async def yandere(self, ctx, *, search: str):
         loading = await ctx.send('<a:loading:598027019447435285> Looking for an image on yande.re...')
         #--Connect to yande.re and get first 100 results--#
-        yande_agent = {'User-Agent': 'Mewtwo Discord Bot/v2.0 https://github.com/sks316/mewtwo-bot'}
+        yande_agent = {'User-Agent': 'Mewtwo Discord Bot/v2.1 https://github.com/sks316/mewtwo-bot'}
         async with aiohttp.ClientSession(headers=yande_agent) as session:
             async with session.get(f'https://yande.re/post/index.json?tags={search}&limit=100') as yande:
                 data = await yande.json()
@@ -180,7 +180,7 @@ class NSFW(commands.Cog):
     async def e621(self, ctx, *, search: str):
         loading = await ctx.send('<a:loading:598027019447435285> Looking for an image on e621...')
         #--Connect to e621 and get first 100 results--#
-        e621_agent = {'User-Agent': 'Mewtwo Discord Bot/v2.0 https://github.com/sks316/mewtwo-bot'}
+        e621_agent = {'User-Agent': 'Mewtwo Discord Bot/v2.1 https://github.com/sks316/mewtwo-bot'}
         async with aiohttp.ClientSession(headers=e621_agent) as session:
             async with session.get(f'https://e621.net/posts.json?tags={search}&limit=100') as esix:
                 data = await esix.json()

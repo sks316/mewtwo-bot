@@ -16,7 +16,7 @@ cogs = ["cogs.general", "cogs.fun", "cogs.nsfw", "cogs.other", "cogs.admin"]
 
 start_time = datetime.datetime.utcnow()
 
-botver = "Mewtwo v2.0"
+botver = "Mewtwo v2.1"
 
 botstatus = [
         'with >help',
@@ -49,7 +49,7 @@ async def on_ready():
     for c in cogs:
         bot.load_extension(c)
     print('Mewtwo, now using Nextcord!')
-    print(f'v2.0 by {dev.name}#{dev.discriminator} - Support: https://discord.gg/kDC9tW7')
+    print(f'v2.1 by {dev.name}#{dev.discriminator} - Support: https://discord.gg/kDC9tW7')
     print(f'Logged into: {bot.user.name}#{bot.user.discriminator}')
     print('------')
 

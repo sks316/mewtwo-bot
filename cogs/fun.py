@@ -8,7 +8,7 @@ import dataset
 import json
 from urllib.parse import quote_plus
 
-botver = "Mewtwo v2.0" #--Bot's version, obviously--#
+botver = "Mewtwo v2.1" #--Bot's version, obviously--#
 
 melo =[ #--List of images for meloetta command--#
     'https://sks316.s-ul.eu/gKaVnpMW',

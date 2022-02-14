@@ -6,7 +6,7 @@ import textwrap
 import traceback
 from contextlib import redirect_stdout
 
-botver = "Mewtwo v2.0"
+botver = "Mewtwo v2.1"
 
 class Admin(commands.Cog):
     def __init__(self, bot):
@@ -33,7 +33,7 @@ class Admin(commands.Cog):
     async def clearterm(self, ctx):
         os.system('clear')
         print('Mewtwo, now in Nextcord!')
-        print('v2.0 by PrincessLillie#2523 - Support: https://discord.gg/kDC9tW7')
+        print('v2.1 by PrincessLillie#2523 - Support: https://discord.gg/kDC9tW7')
         print(f'Logged into: {self.bot.user.name}#{self.bot.user.discriminator}')
         print('------')
         await ctx.send("✅ Done! Check your console!")
