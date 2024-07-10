@@ -110,7 +110,7 @@ class Fun(commands.Cog):
     async def f(self, ctx):
         embed = nextcord.Embed(title='😔 Today, we pay our respects to those that have left us.', color=0x8253c3)
         embed.set_image(url=random.choice(f_meme))
-        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+        embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
 
     @commands.command()
@@ -119,7 +119,7 @@ class Fun(commands.Cog):
         embed = nextcord.Embed(title="<:meloetta_aria:598168128345604127> Here you go, a cute Meloetta! :smile:",color=0x9fdf42)
         embed.add_field(name='List of image sources:', value="https://pastebin.com/cRd5vguH")
         embed.set_image(url=random.choice(melo))
-        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+        embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
 
     @commands.command()
@@ -128,7 +128,7 @@ class Fun(commands.Cog):
         embed = nextcord.Embed(title="<:sylveon:597725070764277786> Here, have some cute Sylveon art :3",color=0xffccfe)
         embed.add_field(name='List of image sources:', value="https://pastebin.com/RwGHXDmS")
         embed.set_image(url=random.choice(sylv))
-        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+        embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
         await ctx.send(embed=embed)
 
     @commands.command(aliases=["pokemon", "pkmn"])
@@ -213,7 +213,7 @@ class Fun(commands.Cog):
                                 embed.add_field(name='Abilities', value=f"{pkmn_ability1}, {pkmn_ability2};\n**Hidden:** {pkmn_hiddenability}")
                         embed.add_field(name='Generation Introduced', value=f"Gen {pkmn_gen}")
                         embed.set_thumbnail(url=pkmn_img)
-                        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         await ctx.send(embed=embed)
                     except (KeyError, TypeError):
                         return await ctx.send(":x: I couldn't find any Pokémon with that name. Double-check your spelling and try again. \nIf you're certain that this Pokémon exists, file a bug report with **>bug**.")
@@ -245,7 +245,7 @@ class Fun(commands.Cog):
                     embed.add_field(name='Type', value=atype)
                     embed.add_field(name='Released', value=f":flag_us: {na_release}\n:flag_eu: {eu_release}\n:flag_jp: {jp_release}\n:flag_au: {au_release}")
                     embed.set_thumbnail(url=image)
-                    embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                    embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                     await ctx.send(embed=embed)
                 except KeyError:
                     return await ctx.send(":x: I couldn't find any Amiibo with that name. Double-check your spelling and try again. \nIf you're certain that this Amiibo exists, file a bug report with **>bug**.")
@@ -284,7 +284,7 @@ class Fun(commands.Cog):
                         pass
                     else:
                         embed.add_field(name="Example:", value=example, inline=False)
-                    embed.set_footer(text=f"{botver} by PrincessLillie#2523 - Author: {author} - 👍️ {str(upvotes)} - 👎️ {str(downvotes)}", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                    embed.set_footer(text=f"{botver} by PrincessLillie - Author: {author} - 👍️ {str(upvotes)} - 👎️ {str(downvotes)}", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                     await msg.edit(content='', embed=embed)
         except:
             await msg.edit(content=":x: Sorry, I couldn't find that word. Check your spelling and try again.")
@@ -302,7 +302,7 @@ class Fun(commands.Cog):
                 result = data.get('url')
                 embed = nextcord.Embed(title=f"🤗 {ctx.author.display_name} hugs {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command(aliases=["pats", "pet"])
@@ -319,7 +319,7 @@ class Fun(commands.Cog):
                 result = data.get('url')
                 embed = nextcord.Embed(title=f"<a:ablobheadpats:612416610556313600> {ctx.author.display_name} gives {user.display_name} some headpats!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command()
@@ -336,7 +336,7 @@ class Fun(commands.Cog):
                 result = data.get('url')
                 embed = nextcord.Embed(title=f"🤗 {ctx.author.display_name} cuddles {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command(aliases=["smooch"])
@@ -353,7 +353,7 @@ class Fun(commands.Cog):
                 result = data.get('url')
                 embed = nextcord.Embed(title=f"❤ {ctx.author.display_name} kisses {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command()
@@ -370,43 +370,43 @@ class Fun(commands.Cog):
                 result = data.get('url')
                 embed = nextcord.Embed(title=f"🤗 {ctx.author.display_name} snuggles {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command(aliases=["nsl", "ns", "switch"])
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def nslookup(self, ctx, *, game):
-        #return await ctx.send(":x: Sorry, nslookup is not functioning right now. The esho.pw API, which is what I use for getting information on Nintendo Switch games, is down for (presumably) upgrades and maintenance. This is not something I can fix, and I have no idea when it'll be back. Please have patience! Thank you!")
-        loading = await ctx.send('<a:loading:598027019447435285> Looking for a game on the eShop...')
-        #--First we connect to the eSho.pw API--#
-        async with aiohttp.ClientSession() as cs:
-            async with cs.get("https://api.esho.pw/games") as r:
-                data = await r.json(content_type="text/plain")
-                #--Now we find information for the game and attempt to extract it--#
-                for g in data:
-                    if g["title_lower"] == game.lower():
-                        gm = g
-                        break
-                    else:
-                        gm = None
-                if gm is None:
-                    await loading.edit(content=":x: I couldn't find that game. Double-check your spelling and try again.")
-                    return
-                #--Now we format this into a nice embed to send back to Discord--#
-                embed = nextcord.Embed(title="ℹ Nintendo Switch game information", color=0xff0000)
-                embed.add_field(name="Title", value=gm["Title"], inline=True)
-                #embed.add_field(name="Price", value="${}.{}".format(str(gm["Prices"]["US"])[0:2], str(gm["Prices"]["US"])[-2:]), inline=True)
-                dt = dateutil.parser.parse(gm["Published"])
-                embed.add_field(name="Released", value="{}/{}/{}".format(dt.month, dt.day, dt.year), inline=True)
-                embed.add_field(name="Description", value=gm["Excerpt"], inline=True)
-                embed.add_field(name="Categories", value=", ".join(gm["Categories"]).title(), inline=True)
-                if "metascore" in gm["Metacritic"]:
-                    embed.add_field(name="Metacritic Score", value=gm["Metacritic"]["metascore"], inline=True)
-                else:
-                    embed.add_field(name="Metacritic Score", value="None found!", inline=True)
-                embed.set_image(url=f'https://{gm["Image"][2:]}')
-                embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
-                await loading.edit(content='', embed=embed)
+        await ctx.send(':x: This command has been retired. The API this command used has shut down, and my developer could not find a suitable replacement. If you find a suitable replacement, please notify my developer!')
+        #loading = await ctx.send('<a:loading:598027019447435285> Looking for a game on the eShop...')
+        ##--First we connect to the eSho.pw API--#
+        #async with aiohttp.ClientSession() as cs:
+        #    async with cs.get("https://api.esho.pw/games") as r:
+        #        data = await r.json(content_type="text/plain")
+        #        #--Now we find information for the game and attempt to extract it--#
+        #        for g in data:
+        #            if g["title_lower"] == game.lower():
+        #                gm = g
+        #                break
+        #            else:
+        #                gm = None
+        #        if gm is None:
+        #            await loading.edit(content=":x: I couldn't find that game. Double-check your spelling and try again.")
+        #            return
+        #        #--Now we format this into a nice embed to send back to Discord--#
+        #        embed = nextcord.Embed(title="ℹ Nintendo Switch game information", color=0xff0000)
+        #        embed.add_field(name="Title", value=gm["Title"], inline=True)
+        #        #embed.add_field(name="Price", value="${}.{}".format(str(gm["Prices"]["US"])[0:2], str(gm["Prices"]["US"])[-2:]), inline=True)
+        #        dt = dateutil.parser.parse(gm["Published"])
+        #        embed.add_field(name="Released", value="{}/{}/{}".format(dt.month, dt.day, dt.year), inline=True)
+        #        embed.add_field(name="Description", value=gm["Excerpt"], inline=True)
+        #        embed.add_field(name="Categories", value=", ".join(gm["Categories"]).title(), inline=True)
+        #        if "metascore" in gm["Metacritic"]:
+        #            embed.add_field(name="Metacritic Score", value=gm["Metacritic"]["metascore"], inline=True)
+        #        else:
+        #            embed.add_field(name="Metacritic Score", value="None found!", inline=True)
+        #        embed.set_image(url=f'https://{gm["Image"][2:]}')
+        #        embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+        #        await loading.edit(content='', embed=embed)
 
     @commands.command(aliases=["rabbit"])
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -424,7 +424,7 @@ class Fun(commands.Cog):
                 id = data["id"]
                 embed = nextcord.Embed(title=f"🐇 Bunny!!!", description=f"🔢 ID: {id}\n👀 This bunny has been seen {seen} times.\n🐰 {total} bunnies have been seen.\n🔗 https://www.bunnies.io/#{id}", color=0x8253c3)
                 embed.set_image(url=image)
-                embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
 def setup(bot):

@@ -27,21 +27,20 @@ class NSFW(commands.Cog):
         loading = await ctx.send('<a:loading:598027019447435285> Looking for an image on Rule34...')
         #--Connect to Rule34 JSON API and download search data--#
         async with aiohttp.ClientSession() as session:
-            async with session.get(f'https://r34-json.herokuapp.com/posts?tags={search}') as r34:
+            async with session.get(f'https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&tags={search}&json=1') as r34:
                 data = await r34.json()
                 #--Now we attempt to extract information--#
                 try:
-                    posts = data['posts']
+                    posts = data
                     post = random.choice(posts)
                     score = post['score']
                     post_id = post['id']
                     image = post['file_url']
-                    image = image.replace("https://r34-json.herokuapp.com/images?url=", "")
                     if image.endswith(".webm") or image.endswith(".mp4"):
                         await loading.edit(content=f":underage: Rule34 image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://rule34.xxx/index.php?page=post&s=view&id={post_id}>\n\n:link: **Video URL:** {image}")
                     else:
                         embed = nextcord.Embed(title=f":underage: Rule34 image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://rule34.xxx/index.php?page=post&s=view&id={post_id})**", color=0x8253c3)
-                        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
                 except IndexError:
@@ -78,7 +77,7 @@ class NSFW(commands.Cog):
                         await loading.edit(content=f":horse: Derpibooru image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://derpibooru.org/images/{post_id}>\n\n:link: **Video URL:** {image}")
                     else:
                         embed = nextcord.Embed(title=f":horse: Derpibooru image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://derpibooru.org/images/{post_id})**", color=0x8253c3)
-                        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
                 except IndexError:
@@ -104,7 +103,7 @@ class NSFW(commands.Cog):
                         await loading.edit(content=f":underage: Gelbooru image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://gelbooru.com/index.php?page=post&s=view&id={post_id}>\n\n:link: **Video URL:** {image}")
                     else:
                         embed = nextcord.Embed(title=f":underage: Gelbooru image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://gelbooru.com/index.php?page=post&s=view&id={post_id})**", color=0x8253c3)
-                        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
                 except IndexError:
@@ -116,19 +115,20 @@ class NSFW(commands.Cog):
     @commands.cooldown(1, 5, commands.BucketType.user)
     @commands.is_nsfw()
     async def boobs(self, ctx, user: nextcord.Member = None):
-        boobs =[
-            'https://nekos.life/api/v2/img/boobs',
-            'https://nekos.life/api/v2/img/tits',
-        ]
-        #--Get image from NekosLife API--#
-        async with aiohttp.ClientSession() as session:
-            async with session.get(random.choice(boobs)) as tiddy:
-                data = await tiddy.json()
-                result = data.get('url')
-                embed = nextcord.Embed(title="🔞 Boobies!",  color=0x8253c3)
-                embed.set_image(url=result)
-                embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
-                await ctx.send(embed=embed)
+        await ctx.send(':x: This command has been retired. The API this command used has shut down, and my developer could not find a suitable replacement. If you find a suitable replacement, please notify my developer!')
+        #boobs =[
+        #    'https://nekos.life/api/v2/img/boobs',
+        #    'https://nekos.life/api/v2/img/tits',
+        #]
+        ##--Get image from NekosLife API--#
+        #async with aiohttp.ClientSession() as session:
+        #    async with session.get(random.choice(boobs)) as tiddy:
+        #        data = await tiddy.json()
+        #        result = data.get('url')
+        #        embed = nextcord.Embed(title="🔞 Boobies!",  color=0x8253c3)
+        #        embed.set_image(url=result)
+        #        embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+        #        await ctx.send(embed=embed)
 
     @commands.command()
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -138,14 +138,14 @@ class NSFW(commands.Cog):
             return await ctx.send(":x: You need someone to fuck! Make sure they consent to it first...")
         if user == ctx.author:
             return await ctx.send(":x: You can't fuck yourself! You can masturbate, but you can't self-fuck.")
-        #--Get image from NekosLife API--#
+        #--Get image from PurrBot API--#
         async with aiohttp.ClientSession() as session:
-            async with session.get('https://nekos.life/api/v2/img/classic') as fuck:
+            async with session.get('https://purrbot.site/api/img/nsfw/fuck/gif') as fuck:
                 data = await fuck.json()
-                result = data.get('url')
+                result = data.get('link')
                 embed = nextcord.Embed(title=f"🔞 {ctx.author.display_name} fucks {user.display_name}!",  color=0x8253c3)
                 embed.set_image(url=result)
-                embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                 await ctx.send(embed=embed)
 
     @commands.command()
@@ -168,7 +168,7 @@ class NSFW(commands.Cog):
                         await loading.edit(content=f":underage: yande.re image for **{search}** \n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://yande.re/post/show/{post_id}>\n\n:link: **Video URL:** {image}")
                     else:
                         embed = nextcord.Embed(title=f":underage: yande.re image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://yande.re/post/show/{post_id})**", color=0x8253c3)
-                        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
                 except IndexError:
@@ -195,7 +195,7 @@ class NSFW(commands.Cog):
                         await loading.edit(content=f":underage: e621 image for **{search}**\n\n:arrow_up: **Score:** {score}\n\n:link: **Post URL:** <https://e621.net/posts/{post_id}>\n\n:link: **Video URL:** {image}")
                     else:
                         embed = nextcord.Embed(title=f":underage: e621 image for **{search}**", description=f"_ _ \n:arrow_up: **Score:** {score}\n\n:link: **[Post URL](https://e621.net/posts/{post_id})**", color=0x8253c3)
-                        embed.set_footer(text=f"{botver} by PrincessLillie#2523", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
+                        embed.set_footer(text=f"{botver} by PrincessLillie", icon_url='https://sks316.s-ul.eu/bsHvTCLJ')
                         embed.set_image(url=image)
                         await loading.edit(content='', embed=embed)
                 except IndexError:
