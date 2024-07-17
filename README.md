@@ -8,9 +8,9 @@ Welcome to the repo for Mewtwo, my little bot written under Nextcord. This is st
 # How to run the bot
 Some of the custom emojis won't work unless manually replaced.
 ## Installing dependencies
-First of all, make sure you've got Python installed. If you don't, what the hell are you even doing here install Python first you idiot
+First of all, ensure that you have Python installed.
 
-Once you've installed Python or if you already had it installed like a good human, cd into the cloned directory and run the following:
+Move to the project directory and install dependencies with pip:
 ```
 pip install -r requirements.txt
 ```
